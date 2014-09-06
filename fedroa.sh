@@ -1,10 +1,10 @@
 #!/bin/bash
 #make fedroa20 to useful for me,ha
-sudo yum update
+sudo yum -y update
 
 #use fcitx and sougou
-sudo yum remove ibus
-sduo yum install fcitx fcitx-devel fcitx-configtool
+sudo yum -y remove ibus
+sduo yum -y install fcitx fcitx-devel fcitx-configtool
 cd ~
 cat >> ~/.bashrc << EOF
 export GTK_IM_MODULE=fcitx  
@@ -20,8 +20,12 @@ sudo chmod +x /usr/lib64/fcitx/fcitx-sogoupinyin.so
 #install flash
 sudo rpm -Uvh http://linuxdownload.adobe.com/adobe-release/adobe-release-x86_64-1.0-1.noarch.rpm
 sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
-sudo yum install flash-plugin
+sudo yum -y install flash-plugin
 
-#
+#install gnome-tweak-tool
+sudo yum -y install gnome-tweak-tool
+
+#install software-center
+sudo yum -y install gnome-software
 
 
