@@ -30,4 +30,9 @@ sudo chmod +x /usr/lib64/fcitx/fcitx-sogoupinyin.so
 #
 #config terminator
 #
+cd ~/config/
+[ !-d ~/.config/terminator ] && mkdir ~/.config/terminator
+mv config ~/.config/terminator/
+mv dircolors ~/.dircolors
+
 
