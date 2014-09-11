@@ -43,3 +43,10 @@ sudo yum -y install freetype-infinality infinality-settings
 mkfontdir
 mkfontscale
 fc-cache -fv
+
+#
+#install orchis-gtk-theme
+#
+sudo wget http://download.opensuse.org/repositories/home:/snwh:/orchis-gtk-theme/Fedora_20/home:snwh:orchis-gtk-theme.repo -O /etc/yum.repos.d/orchis-gtk-theme.repo
+sudo yum update
+sudo yum install orchis-gtk-theme
