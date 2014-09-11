@@ -35,4 +35,11 @@ cd ~/config/
 mv config ~/.config/terminator/
 mv dircolors ~/.dircolors
 
-
+#
+#中文字体发虚
+#
+sudo rpm -Uvh http://www.infinality.net/fedora/linux/infinality-repo-1.0-1.noarch.rpm
+sudo yum -y install freetype-infinality infinality-settings
+mkfontdir
+mkfontscale
+fc-cache -fv
