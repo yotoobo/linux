@@ -14,7 +14,7 @@ sudo yum -y yum-plugin-fastestmirror flash-plugin gnome-tweak-tool gnome-softwar
 #use fcitx and sougou
 #
 sudo yum -y remove ibus
-sduo yum -y install fcitx fcitx-devel fcitx-configtool
+sudo yum -y install fcitx fcitx-devel fcitx-configtool
 cd ~
 cat >> ~/.bashrc << EOF
 export GTK_IM_MODULE=fcitx  
