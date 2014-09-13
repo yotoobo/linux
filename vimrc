@@ -14,6 +14,7 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
+Plugin 'Lokaltog/vim-powerline'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -32,10 +33,17 @@ set showmode
 set ignorecase
 set nobackup
 set noswapfile
+
 "Tab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+
 "utf-8
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+
+"vim有一个状态栏 加上powline则有两个状态栏
+set laststatus=2
+set t_Co=256
+let g:Powline_symbols='fancy'
