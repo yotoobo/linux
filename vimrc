@@ -10,19 +10,19 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'L9'
 Plugin 'git://git.wincent.com/command-t.git'
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-"Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}  "A parser for a condensed HTML format
+Plugin 'Valloric/YouCompleteMe' "A code-completion engine for Vim
+Plugin 'davidhalter/jedi' "Awesome autocompletion library for python
+Plugin 'scrooloose/syntastic' "Syntax checking hacks for vim
 Plugin 'scrooloose/nerdtree'
-Plugin 'Lokaltog/vim-powerline'
-Plugin 'vim-scripts/peaksea'
+Plugin 'Lokaltog/vim-powerline' "The ultimate vim statusline utility
+Plugin 'vim-scripts/peaksea' "colorscheme
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 "General
 syntax on
-set nocompatible
 set history=700
 set nu
 set hlsearch
@@ -52,9 +52,14 @@ set laststatus=2
 set t_Co=256
 let g:Powline_symbols='fancy'
 
-"实现当前行列
+"标记当前行列
 set cursorline
 set cursorcolumn
 
 "colorscheme
-colorscheme peaksea
+if ! has("gui_running")
+    set t_Co=256
+endif
+" feel free to choose :set background=light for a different style
+set background=dark
+colors peaksea
