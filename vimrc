@@ -15,6 +15,7 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Lokaltog/vim-powerline'
+Plugin 'vim-scripts/peaksea'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -35,6 +36,7 @@ set showmatch
 set ignorecase
 set nobackup
 set noswapfile
+set backspace=indent,eol,start
 
 "设置Tab键
 set tabstop=4
@@ -53,3 +55,6 @@ let g:Powline_symbols='fancy'
 "实现当前行列
 set cursorline
 set cursorcolumn
+
+"colorscheme
+colorscheme peaksea
