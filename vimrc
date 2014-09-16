@@ -70,3 +70,9 @@ colors peaksea
 let mapleader = ','
 let maplocalleader = "\\"
 map <leader>tn :tabnew<cr>
+
+imap <c-d> <esc>ddi 
+imap <c-k> <up>
+imap <c-j> <down>
+imap <c-l> <right>
+imap <c-h> <left>
