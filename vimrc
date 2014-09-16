@@ -66,7 +66,7 @@ endif
 set background=dark
 colors peaksea
 
-“map
+"map
 let mapleader = ','
 let maplocalleader = "\\"
 map <Leader>s :w<CR>
