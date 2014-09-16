@@ -69,7 +69,11 @@ colors peaksea
 “map
 let mapleader = ','
 let maplocalleader = "\\"
+map <Leader>s :w<CR>
+map <Leader>x :x<CR>
+map <Leader>q :q!<CR>
 map <leader>tn :tabnew<cr>
+map! jj <esc>
 
 imap <c-d> <esc>ddi 
 imap <c-k> <up>
