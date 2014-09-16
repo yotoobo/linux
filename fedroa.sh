@@ -5,9 +5,9 @@
 sudo yum -y update
 
 sudo rpm -Uvh http://linuxdownload.adobe.com/adobe-release/adobe-release-x86_64-1.0-1.noarch.rpm
-sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
 sudo rpm -ivh http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm
 sudo rpm -ivh http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm
+
 sudo yum -y yum-plugin-fastestmirror flash-plugin gnome-tweak-tool gnome-software mplayer smplayer teamview terminator
 
 #
@@ -40,8 +40,8 @@ mv dircolors ~/.dircolors
 #
 sudo rpm -Uvh http://www.infinality.net/fedora/linux/infinality-repo-1.0-1.noarch.rpm
 sudo yum -y install freetype-infinality infinality-settings
-mkfontdir
-mkfontscale
+sudo mkfontdir
+sudo mkfontscale
 fc-cache -fv
 
 #
