@@ -22,10 +22,11 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 "General
-syntax on
-set history=700
-set nu
-set hlsearch
+syntax on                              ”开启语法检测
+set history=700                        “记录历史命令
+set nu                                 ”显示行号
+set ic                                 "查找时忽略大小写
+set hlsearch                           “高亮查找
 set autoindent
 set autowrite
 set autoread
@@ -63,3 +64,8 @@ endif
 " feel free to choose :set background=light for a different style
 set background=dark
 colors peaksea
+
+“map
+let mapleader = ','
+let maplocalleader = "\\"
+map <leader>tn :tabnew<cr>
