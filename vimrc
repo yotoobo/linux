@@ -6,13 +6,13 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-"Plugin
+"Useful Plugin
 Plugin 'tpope/vim-fugitive'
-Plugin 'L9'
-Plugin 'git://git.wincent.com/command-t.git'
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}  "A parser for a condensed HTML format
-Plugin 'Valloric/YouCompleteMe' "A code-completion engine for Vim
-Plugin 'davidhalter/jedi' "Awesome autocompletion library for python
+"Plugin 'L9'
+"Plugin 'git://git.wincent.com/command-t.git'
+"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}  "A parser for a condensed HTML format
+"Plugin 'Valloric/YouCompleteMe' "A code-completion engine for Vim
+"Plugin 'davidhalter/jedi' "Awesome autocompletion library for python
 Plugin 'scrooloose/syntastic' "Syntax checking hacks for vim
 Plugin 'scrooloose/nerdtree'
 Plugin 'Lokaltog/vim-powerline' "The ultimate vim statusline utility
