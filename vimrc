@@ -70,6 +70,10 @@ colors peaksea
 "map
 let mapleader = ','
 let maplocalleader = "\\"
+
+nnoremap <leader>ev :split $MYVIMRC<cr>
+nnoremap <leader>re :source $MYVIMRC<cr>
+
 map <leader>s :w<CR>
 map <leader>x :x<CR>
 map <leader>q :q!<CR>
