@@ -26,7 +26,7 @@ syntax on
 set history=700
 set nu
 set ic
-set hlsearch
+set nohlsearch
 set incsearch
 set autoindent
 set autowrite
@@ -39,6 +39,7 @@ set ignorecase
 set nobackup
 set noswapfile
 set backspace=indent,eol,start
+set wrap
 
 "设置Tab键
 set tabstop=4
