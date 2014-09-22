@@ -1,3 +1,4 @@
+#encoding:utf-8
 #python tab 补齐
 import sys
 import readline
