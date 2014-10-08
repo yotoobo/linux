@@ -23,3 +23,7 @@ cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mariadb55 -DMYSQL_DATADIR=/home/webbak
 -DDEFAULT_COLLATION=utf8_general_ci -DWITH_DEBUG=0 -DWITH_XTRADB_STORAGE_ENGINE=1
 make
 make install
+cd support-files/
+cp mysql.server /etc/init.d/mysql
+chmod u+x /etc/init.d/mysql
+cp my-innodb-heavy-4G.cnf /etc/my.cnf
