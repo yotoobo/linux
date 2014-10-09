@@ -15,3 +15,4 @@ cp php.ini-production /usr/local/php55/etc/php.ini
 cp sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm
 chmod u+x /etc/init.d/php-fpm
 cp /usr/local/php55/etc/php-fpm.conf.default /usr/local/php55/etc/php-fpm.conf
+[ -d /usr/local/php55/etc/php.d ] || mkdir /usr/local/php55/etc/php.d
