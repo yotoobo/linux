@@ -2,7 +2,7 @@
 yum -y install ncurses-devel cmake 
 
 #install jemalloc 
-wget http://www.canonware.com/download/jemalloc/jemalloc-3.6.0.tar.bz
+wget http://www.canonware.com/download/jemalloc/jemalloc-3.6.0.tar.bz2
 tar jxf jemalloc-3.6.0.tar.bz2
 cd jemalloc-3.6.0
 ./configure
