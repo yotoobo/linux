@@ -12,15 +12,25 @@ echo '/usr/local/lib' > /etc/ld.so.conf.d/local.conf
 ldconfig
 
 #install mariadb for source 
-wget http://mirrors.hustunique.com/mariadb/mariadb-5.5.39/source/mariadb-5.5.39.tar.gz
-tar zxf mariadb-5.5.39.tar.gz
-cd mariadb-5.5.39
-cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mariadb55 -DMYSQL_DATADIR=/home/webbak/mysql_data \
+wget http://mirrors.neusoft.edu.cn/mariadb/mariadb-5.5.40/source/mariadb-5.5.40.tar.gz
+tar zxf mariadb-5.5.40.tar.gz
+cd mariadb-5.5.40
+cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mariadb55 -DMYSQL_DATADIR=/home/data/mysql \
 -DWITH_READLINE=on -DCMAKE_EXE_LINKER_FLAGS="-ljemalloc" -DWITH_SAFEMALLOC=OFF \
--DWITH_XTRADB_STORAGE_ENGINE=1 -DWITH_INNOBASE_STORAGE_ENGINE=1 \
--DWITH_PARTITION_STORAGE_ENGINE=1 -DWITH_BLACKHOLE_STORAGE_ENGINE=1 \
--DWITH_MYISAM_STORAGE_ENGINE=1 -DDEFAULT_CHARSET=utf8 \
--DDEFAULT_COLLATION=utf8_general_ci -DWITH_DEBUG=0 -DWITH_XTRADB_STORAGE_ENGINE=1
+-DWITH_XTRADB_STORAGE_ENGINE=1 \
+-DWITH_INNOBASE_STORAGE_ENGINE=1 \
+-DWITH_PARTITION_STORAGE_ENGINE=1 \
+-DWITH_BLACKHOLE_STORAGE_ENGINE=1 \
+-DWITH_MYISAM_STORAGE_ENGINE=1 \
+-DWITH_XTRADB_STORAGE_ENGINE=1 \
+-DWITH_SPHINX_STORAGE_ENGINE=1 \
+-DWITH_ZLIB=bundled \
+-DWITH_SSL=bundled \
+-DENABLED_LOCAL_INFILE=1 \
+-DWITH_EXTRA_CHARSETS=all \
+-DDEFAULT_CHARSET=utf8 \
+-DDEFAULT_COLLATION=utf8_general_ci \
+-DWITH_DEBUG=0
 make
 make install
 cd support-files/
