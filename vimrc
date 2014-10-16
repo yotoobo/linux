@@ -17,6 +17,7 @@ Plugin 'scrooloose/syntastic' "Syntax checking hacks for vim
 Plugin 'scrooloose/nerdtree'
 Plugin 'Lokaltog/vim-powerline' "The ultimate vim statusline utility
 Plugin 'vim-scripts/peaksea' "colorscheme
+Plugin 'Lokaltog/vim-easymotion'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
