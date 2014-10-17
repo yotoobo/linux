@@ -79,7 +79,7 @@ map <leader>s :w<CR>
 map <leader>x :x<CR>
 map <leader>q :q!<CR>
 map <leader>tn :tabnew<cr>
-map! jk <esc>
+map! jj <esc>
 
 imap <c-d> <esc>ddi
 imap <c-k> <up>
