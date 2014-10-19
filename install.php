@@ -1,5 +1,15 @@
 #yum
+rpm -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 yum -y install libicu-devel libxml2-devel bzip2-devel libmcrypt-devel openssl-devel libcurl-devel
+
+#install re2c
+cd ~
+wget http://downloads.sourceforge.net/project/re2c/re2c/0.13.7.5/re2c-0.13.7.5.tar.gz
+tar zxf re2c-0.13.7.5.tar.gz
+cd re2c-0.13.7.5
+phpize
+./configure
+make && make install
 
 #download php5.5
 cd ~
