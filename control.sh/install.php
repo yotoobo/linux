@@ -28,7 +28,7 @@ cd intl-3.0.0
 phpize
 ./configure --enable-intl
 make && make install
-echo "extension=intl.so" >> /usr/local/php5/etc/php.d/extension.ini
+echo "extension=intl.so" >> /usr/local/php55/etc/php.d/extension.ini
 cd ..
 
 wget http://pecl.php.net/get/memcache-3.0.8.tgz
@@ -37,8 +37,13 @@ cd memcache-3.0.8
 phpize
 ./configure --enable-memcache
 make && make install
-echo "extension=memcache.so" >> /usr/local/php5/etc/php.d/extension.ini
+echo "extension=memcache.so" >> /usr/local/php55/etc/php.d/extension.ini
 cd ..
 
-
-
+wget http://pecl.php.net/get/redis-2.2.5.tgz
+tar zxf redis-2.2.5.tgz
+phpize
+./configure
+make && make install
+echo "extension=redis.so" >> /usr/local/php55/etc/php.d/extension.ini
+cd ..
