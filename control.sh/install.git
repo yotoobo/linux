@@ -1,4 +1,4 @@
-#Install git
+#!/bin/bash
 
 if [ -f /etc/redhat-release ]:then
   if [ -f `which git` ];then
