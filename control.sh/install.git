@@ -1,18 +1,24 @@
-#Install git from source code
+#Install git
 
-#remove old git
-[ -f `which git` ] && yum -y remove git
+if [ -f /etc/redhat-release ]:then
+  if [ -f `which git` ];then
+    yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel
+  else
+    yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel git
+  fi
+else
+  if [ -f `which git` ];then
+    apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
+  else
+    apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev git
+  fi
+fi
+
+#clone git
+git clone https://github.com/git/git
 
 #install git
-yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel
-or
-apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
-
-
-cd /usr/local/src/   
-wget https://www.kernel.org/pub/software/scm/git/git-2.1.2.tar.gz
-tar zxf git-2.1.2.tar.gz
-cd git-2.1.2
+cd git
 make prefix=/usr/local all
 make prefix=/usr/local install
 
