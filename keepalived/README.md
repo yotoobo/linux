@@ -12,7 +12,7 @@
   * Nginx+Keepalived
   * HAProxy+Keepalived
 
-## keepalived.cfg
+## keepalived.cfg 示例
 ```
 ! Configuration File for keepalived
 
