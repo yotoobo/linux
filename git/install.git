@@ -20,8 +20,8 @@ function install() {
 }
 
 function update() {
-	git clone https://github.com/git/git
-	cd git
+	git clone https://github.com/git/git ~/
+	cd ~/git
 	git pull
 	make prefix=/usr/local all
     make prefix=/usr/local install
