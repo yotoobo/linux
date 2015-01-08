@@ -7,14 +7,14 @@
   * 更强大的session保持，cookie的引导
   * 支持多的负载均衡算法
 
-## 示例
+## 应用示例
 ![示例](https://github.com/yotoobo/config/blob/master/haproxy/haproxy-pmode.png)
 
 ## [官方文档](http://cbonte.github.io/haproxy-dconv/configuration-1.5.html)
 
-## haproxy.cfg
+## haproxy.cfg 配置
 ```global
-	log 127.0.0.1	local0
+	log 127.0.0.1	local0 日志记录到本地
 	log 127.0.0.1	local1 notice 
 	#log 127.0.0.1	local1 notice
 	#log loghost	local0 info
@@ -23,8 +23,8 @@
 	chroot /usr/share/haproxy
 	uid 99
 	gid 99
-	daemon
-	nbproc 1   #
+	daemon     #后台运行
+	nbproc 1   #启动进程
 	#debug
 	#quiet
 
@@ -34,23 +34,22 @@ defaults
 	option	httplog
 	option	dontlognull
 	log	127.0.0.1 local3
-	retries	3
-	option redispatch
-	maxconn 10240
+	retries	3          #健康检查的重试次数
+	option redispatch  #当服务器组中出现机器不可用，自动将请求重定向到存活机器
 
-	timeout check	1s
-	timeout http-request 10s
-	timeout queue	1m
-	timeout connect	10s
-	timeout client	1m
-	timeout server	1m
-	timeout http-keep-alive 30s
+	timeout check	1s  
+	timeout http-request 10s    #请求超时
+	timeout queue	1m          #请求在队列中的超时
+	timeout connect	10s         #连接超时
+	timeout client	1m          #客户端超时
+	timeout server	1m          #服务端超时
+	timeout http-keep-alive 30s 
 
 listen stats
 	mode  http
-	#bind  0.0.0.0:8090
+        bind  0.0.0.0:8090
 	stats enable
-	stats refresh 30s
+	stats refresh 30s  
 	stats uri /stats
 	stats realm baison-test-Haproxy
 	stats auth admin:admin
@@ -64,25 +63,20 @@ frontend allen
 	option forwardfor
 
 	acl url_static path_end -i .html .jpg .gif .png
-	acl url_dynamic path_end -i .php
-	acl url_thinkphp hdr_beg(host) -i localhost
+	acl url_dynamic path_end -i .php .jsp
 
-	default_backend webservers
-	use_backend dynamic if url_dynamic
-	use_backend weba if url_thinkphp
+	default_backend webDynamic
+	use_backend webStatic if url_static
+        use_backend webDynamic if url_dynamic
 
-backend webservers
+backend webDynamic
 	balance roundrobin
-	server web1 IP:80 check rise 2 fall 1 weight 2
-	server web2 IP:80 check rise 2 fall 1 weight 2
+	server web1 10.0.0.1:80 check rise 2 fall 1 weight 2
+	server web2 10.0.0.2:80 check rise 2 fall 1 weight 2
 
-backend dynamic
+backend webStatic
 	balance source
-	server lamp IP:80 check rise 2 fall 1
-
-backend weba
-	balance roundrobin
-	server web1 IP:80 check rise 2 fall 1 weight 2```
+	server lamp 10.0.0.3:80 check rise 2 fall 1```
 
 
 
