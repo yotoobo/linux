@@ -1,0 +1,29 @@
+#!/bin/bash
+
+if [ -f /etc/redhat-release ]:then
+  if [ -f `which git` ];then
+    yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel
+  else
+    yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel git
+  fi
+  git clone https://github.com/git/git
+  yum -y remove git
+else
+  if [ -f `which git` ];then
+    apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
+  else
+    apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev git
+  fi
+  git clone https://github.com/git/git
+  apt-get remove git
+fi
+
+#install git
+cd git
+make prefix=/usr/local all
+make prefix=/usr/local install
+
+#use git
+git --version
+
+
