@@ -1,1 +1,0 @@
-Keepalived 是一款高可用软件
