@@ -12,7 +12,7 @@
 
 ## [官方文档](http://cbonte.github.io/haproxy-dconv/configuration-1.5.html)
 
-## haproxy.cfg 配置
+## haproxy.cfg 配置示例
 ```global
 	log 127.0.0.1	local0 日志记录到本地
 	log 127.0.0.1	local1 notice 
