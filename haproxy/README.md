@@ -1,7 +1,15 @@
-## What's haproxy
-HAProxy is a free, very fast and reliable solution offering high availability, load balancing, and proxying for TCP and HTTP-based applications. It is particularly suited for very high traffic web sites and powers quite a number of the world's most visited ones. Over the years it has become the de-facto standard opensource load balancer, is now shipped with most mainstream Linux distributions, and is often deployed by default in cloud platforms. Since it does not advertise itself, we only know it's used when the admins report it :-) 
-![proxy](http://www.haproxy.org/img/haproxy-pmode.png)
+## HAProxy 是什么？
+  **HAProxy**是一款自由，快速，可靠的解决方案。它用以提供高可用性、负载均衡和基于tcp和http应用的代理。  
 
-[官方文档](http://cbonte.github.io/haproxy-dconv/configuration-1.5.html)
+## HAProxy 有什么特点？
+  * 支持虚拟主机，工作在4，7层
+  * 支持url检测后端服务器
+  * 更强大的session保持，cookie的引导
+  * 支持多的负载均衡算法
 
-haproxy.cfg 
+## 示例
+![示例](https://github.com/yotoobo/config/haproxy/haproxy-pmode.png)
+
+## [官方文档](http://cbonte.github.io/haproxy-dconv/configuration-1.5.html)
+
+
