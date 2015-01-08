@@ -1,27 +1,43 @@
 #!/bin/bash
 
-if [ -f /etc/redhat-release ]:then
-  if [ -f `which git` ];then
-    yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel
-  else
-    yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel git
-  fi
-  git clone https://github.com/git/git
-  yum -y remove git
-else
-  if [ -f `which git` ];then
-    apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
-  else
-    apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev git
-  fi
-  git clone https://github.com/git/git
-  apt-get remove git
+function first() {
+if [ -f `which yum` ]:then
+    yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel wget unzip
+fi
+if [ -f `which apt-get` ];then 
+    apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev wget unzip
 fi
 
-#install git
-cd git
-make prefix=/usr/local all
-make prefix=/usr/local install
+}
+
+function install() {
+    first
+	wget https://github.com/git/git/archive/master.zip  
+	unzip master.zip
+	cd master
+	make prefix=/usr/local all
+    make prefix=/usr/local install
+}
+
+function update() {
+	git clone https://github.com/git/git
+	cd git
+	git pull
+	make prefix=/usr/local all
+    make prefix=/usr/local install
+}
+
+echo "Please enter the num.
+      1.Install git 2.Update git ..."
+read NUM 
+
+if [ $NUM -eq 1 ];then
+	install
+else
+	[ $NUM -eq 2 ] && update
+else
+	echo "Please enter 1 or 2 ... thanks!"
+fi
 
 #use git
 git --version
