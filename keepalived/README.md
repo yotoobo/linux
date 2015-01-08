@@ -3,9 +3,9 @@
 剔除群中的故障机器，待其服务可用时，在添加到群中。
 
 ## 文档
-  [官方文档](http://www.keepalived.org/documentation.html)
-  [VRRP协议](http://bbs.nanjimao.com/thread-790-1-1.html)
-  [Keepalived原理与实战精讲](http://bbs.nanjimao.com/thread-845-1-1.html)
+  [官方文档](http://www.keepalived.org/documentation.html)  
+  [VRRP协议](http://bbs.nanjimao.com/thread-790-1-1.html)  
+  [Keepalived原理与实战精讲](http://bbs.nanjimao.com/thread-845-1-1.html)  
 
 ## 应用场景
   * LVS+Keepalived
@@ -46,8 +46,7 @@ vrrp_instance Haproxy {
     track_script { #执行
 	check
     }
-}
-```
+} ```
 
 
 
