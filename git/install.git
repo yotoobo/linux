@@ -27,7 +27,7 @@ function install() {
         make prefix=/usr/local install
 		
 		cd contrib/completion/
-		MYSHELL=`echo $SHELL |awk -F/ '{print $NR}'`
+		MYSHELL=`echo $SHELL |awk -F/ '{print $NF}'`
 		cp git-completion.$MYSHELL ~/.git-completion.$MYSHELL
 		echo "Please enter your real username and password for github to ~/.netrc "
 		echo "machine github.com login your-username password your-passwork" >> ~/.netrc
