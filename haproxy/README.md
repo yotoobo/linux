@@ -8,7 +8,7 @@
   * 支持多的负载均衡算法
 
 ## 示例
-![示例](https://github.com/yotoobo/config/haproxy/haproxy-pmode.png)
+![示例](https://github.com/yotoobo/config/blob/master/haproxy/haproxy-pmode.png)
 
 ## [官方文档](http://cbonte.github.io/haproxy-dconv/configuration-1.5.html)
 
