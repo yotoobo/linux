@@ -42,11 +42,12 @@ function install() {
 }
 
 function update() {
-	git clone https://github.com/git/git ~/git
+	[ -d ~/git ] || git clone https://github.com/git/git ~/git
 	cd ~/git
 	git pull
 	make prefix=/usr/local all
     make prefix=/usr/local install
+	make clean
 }
 
 echo "Please enter the num.
