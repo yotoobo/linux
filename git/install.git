@@ -24,7 +24,7 @@ function install() {
 	    unzip -q master.zip
 	    cd git-master
 	    make prefix=/usr/local all
-            make prefix=/usr/local install
+        make prefix=/usr/local install
 		
 	    cd contrib/completion/
 	    MYSHELL=`echo $SHELL |awk -F/ '{print $NF}'`
