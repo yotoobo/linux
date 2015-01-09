@@ -13,8 +13,7 @@
   * HAProxy+Keepalived
 
 ## keepalived.cfg 示例
-```
-! Configuration File for keepalived
+```! Configuration File for keepalived
 
 global_defs { #配置邮件通知，可省略
 	notification_email {
@@ -46,8 +45,7 @@ vrrp_instance Haproxy {
     track_script { #执行
 	check
     }
-} 
-```
+} ```
 
 ## 故障排查
   1. 关闭防火墙
