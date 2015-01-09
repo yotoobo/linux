@@ -16,17 +16,17 @@
 * [Install Git](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 * Config and help  
-_这些是一些通用配置项,请根据个人情况自行修改斜体部分._  
-```$ git config --global user.name "_yotoobo_"  
-   $ git config --global user.email _yotoobo@gmail.com_  
-   $ git config --global core.editor _vim_```  
+_这些是一些通用配置项,请根据个人情况自行修改._  
+```$ git config --global user.name "yotoobo"  
+   $ git config --global user.email yotoobo@gmail.com  
+   $ git config --global core.editor vim ```  
 获取某一命令的帮助信息
-```$ git help _add_```
+```$ git help add ```
 
 * Getting and Create Projects  
 创建一个本地空仓库  
 ```$ cd /path/to/targetDir  
-   $ git init```  
+   $ git init ```  
 克隆一个已存在的仓库  
 ```$ git clone ssh://[user@]host.xz[:port]/path/to/repo.git/  
    or  
@@ -34,4 +34,4 @@ _这些是一些通用配置项,请根据个人情况自行修改斜体部分._
    or  
    $ git clone http[s]://host.xz[:port]/path/to/repo.git/  
    or  
-   $ git clone -l -s -n . ../tecopy```
+   $ git clone -l -s -n . ../copy ```
