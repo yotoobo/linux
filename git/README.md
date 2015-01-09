@@ -17,9 +17,9 @@
 
 * Config and help  
 _这些是一些通用配置项,请根据个人情况自行修改._  
-```$ git config --global user.name "yotoobo"  
-   $ git config --global user.email yotoobo@gmail.com  
-   $ git config --global core.editor vim ```  
+```$ git config --global user.name "yotoobo"```
+```$ git config --global user.email yotoobo@gmail.com  ```
+```$ git config --global core.editor vim ```  
 获取某一命令的帮助信息
 ```$ git help add ```
 
