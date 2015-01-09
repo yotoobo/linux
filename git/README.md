@@ -30,10 +30,7 @@ _这些是一些通用配置项,请根据个人情况自行修改._
 ``` $ cd /path/to/targetDir  
     $ git init ```  
 克隆一个已存在的仓库  
-``` $ git clone ssh://[user@]host.xz[:port]/path/to/repo.git/  
-    or  
-    $ git clone git://host.xz[:port]/path/to/repo.git/  
-    or  
-    $ git clone http[s]://host.xz[:port]/path/to/repo.git/  
-    or  
+``` $ git clone ssh://[user@]host.xz[:port]/path/to/repo.git/
+    $ git clone git://host.xz[:port]/path/to/repo.git/
+    $ git clone http[s]://host.xz[:port]/path/to/repo.git/
     $ git clone -l -s -n . ../copy ```
