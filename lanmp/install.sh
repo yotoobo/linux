@@ -7,8 +7,12 @@ else
 	exit 0
 fi
 
+function Exit() {	
+	[ $? -eq 0 ] && exit 
+}
+
 function Yum() {
-	[ `rpm -qa|grep epel|grep -v 'grep'` -eq 0 ] && rpm -ivh http://mirrors.zju.edu.cn/epel/6/x86_64/epel-release-6-8.noarch.rpm    
+	rpm -ivh http://mirrors.zju.edu.cn/epel/6/x86_64/epel-release-6-8.noarch.rpm    
 	yum -y install gcc wget libjpeg-devel libpng-devel mysql-devel libicu-devel libxml2-devel bzip2-devel libmcrypt-devel openssl-devel libcurl-devel
 }
 
@@ -26,13 +30,16 @@ if [ $? -eq 0 ];then
 	--enable-sockets --enable-mbstring --enable-fpm --enable-soap --with-mcrypt --with-bz2 \
 	--with-openssl --with-zlib --with-mhash --with-mysql --with-mysqli --with-pdo-mysql \
 	--with-curl
+	Exit
 	make
+	Exit
 	make install
 	cp php.ini-production /usr/local/php55/etc/php.ini
 	cp sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm
 	chmod u+x /etc/init.d/php-fpm
 	cp /usr/local/php55/etc/php-fpm.conf.default /usr/local/php55/etc/php-fpm.conf
 	[ -d /usr/local/php55/etc/php.d ] || mkdir /usr/local/php55/etc/php.d
+	[ -f /usr/local/php55/etc/php.d/extension.ini ] || touch /usr/local/php55/etc/php.d/extension.ini
 fi
 
 function InstallPHP53 {
@@ -45,13 +52,16 @@ if [ $? -eq 0 ];then
 	--enable-sockets --enable-mbstring --enable-fpm --enable-soap --with-mcrypt --with-bz2 \
 	--with-openssl --with-zlib --with-mhash --with-mysql --with-mysqli --with-pdo-mysql \
 	--with-curl --with-gd --with-jpeg-dir --with-png-dir   
+	Exit
 	make
+	Exit
 	make install
 	cp php.ini-production /usr/local/php53/etc/php.ini
 	cp sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm
 	chmod u+x /etc/init.d/php-fpm
 	cp /usr/local/php53/etc/php-fpm.conf.default /usr/local/php53/etc/php-fpm.conf
 	[ -d /usr/local/php53/etc/php.d ] || mkdir /usr/local/php53/etc/php.d
+	[ -f /usr/local/php53/etc/php.d/extension.ini ] || touch /usr/local/php53/etc/php.d/extension.ini
 fi
 }
 
@@ -84,4 +94,20 @@ function Extension() {
 	echo "extension=redis.so" >> /usr/local/php55/etc/php.d/extension.ini
 	cd ..
 }
+
+
+# 
+# 
+echo "请输入1 or 2 来选择PHP版本  1.PHP5.3  2.PHP5.5	"
+read -n NUM
+if [ $NUM -eq 1 ];then
+	Yum
+	Config
+	InstallPHP53
+fi
+if [ $NUM -eq 2 ];then
+	Yum
+	Config
+	InstallPHP55
+fi
 
