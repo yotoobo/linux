@@ -48,5 +48,13 @@ vrrp_instance Haproxy {
     }
 } ```
 
+## 故障排查
+  1. 关闭防火墙
+  2. 查看message
+  3. 配置文件是否正确？因为那怕文件错了，keepalived也可以正常启动。
+  
+
+
+  
 
 
