@@ -98,7 +98,7 @@ function Extension() {
 
 # 
 # 
-echo "请输入1 or 2 来选择PHP版本  1.PHP5.3  2.PHP5.5	"
+echo "请输入 1 or 2 来选择PHP版本  1.PHP5.3  2.PHP5.5	"
 read -n NUM
 if [ $NUM -eq 1 ];then
 	Yum
