@@ -46,7 +46,8 @@ vrrp_instance Haproxy {
     track_script { #执行
 	check
     }
-} ```
+} 
+```
 
 ## 故障排查
   1. 关闭防火墙
