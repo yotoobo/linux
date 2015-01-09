@@ -17,23 +17,23 @@
 
 * Config and help  
 _这些是一些通用配置项,请根据个人情况自行修改._  
-```$ git config --global user.name "yotoobo" 
-   $ git config --global user.email yotoobo@gmail.com  
-   $ git config --global core.editor vim  
-   $ git Config --global push.default simple```  
+``` $ git config --global user.name "yotoobo" 
+    $ git config --global user.email yotoobo@gmail.com  
+    $ git config --global core.editor vim  
+    $ git Config --global push.default simple  ```  
 
-获取某一命令的帮助信息
+获取某一命令的帮助信息  
 ```$ git help add ```
 
 * Getting and Create Projects  
 创建一个本地空仓库  
-```$ cd /path/to/targetDir  
-   $ git init ```  
+``` $ cd /path/to/targetDir  
+    $ git init ```  
 克隆一个已存在的仓库  
-```$ git clone ssh://[user@]host.xz[:port]/path/to/repo.git/  
-   or  
-   $ git clone git://host.xz[:port]/path/to/repo.git/  
-   or  
-   $ git clone http[s]://host.xz[:port]/path/to/repo.git/  
-   or  
-   $ git clone -l -s -n . ../copy ```
+``` $ git clone ssh://[user@]host.xz[:port]/path/to/repo.git/  
+    or  
+    $ git clone git://host.xz[:port]/path/to/repo.git/  
+    or  
+    $ git clone http[s]://host.xz[:port]/path/to/repo.git/  
+    or  
+    $ git clone -l -s -n . ../copy ```
