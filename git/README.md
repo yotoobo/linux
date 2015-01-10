@@ -48,9 +48,21 @@ $ git clone -l -s -n ./repo ./repocopy
 
 *  _添加与提交_
 ```
-cd newdir
-git init
-touch newfile
-git add newfile
-git commit -m "添加新文件"
+$ cd newdir
+$ git init
+$ touch newfile
+$ git add newfile
+$ git commit -m "添加新文件"
+```  
+
+* _分支_
+```
+创建一个叫feature_x的分支并切换到feature_x
+$ git checkout -b feature_x
+切换回主分支
+$ git checkout master
+删除分支
+$ git checkout -d feature_x
+推送分支到远程仓库
+$ git push origin <branch>
 ```
