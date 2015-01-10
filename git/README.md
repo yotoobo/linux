@@ -32,7 +32,9 @@ $ git Config --global push.default simple
 ``` $ cd /path/to/targetDir  
     $ git init ```  
 克隆一个已存在的仓库  
-``` $ git clone ssh://[user@]host.xz[:port]/path/to/repo.git/  
-    $ git clone git://host.xz[:port]/path/to/repo.git/  
-    $ git clone http[s]://host.xz[:port]/path/to/repo.git/  
-    $ git clone -l -s -n . ../copy ```
+``` 
+$ git clone ssh://[user@]host.xz[:port]/path/to/repo.git/  
+$ git clone git://host.xz[:port]/path/to/repo.git/  
+$ git clone http[s]://host.xz[:port]/path/to/repo.git/  
+$ git clone -l -s -n . ../copy 
+```
