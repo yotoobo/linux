@@ -13,10 +13,10 @@
   * 合并-如果你分支或者分叉了一个存储，那么你将不可避免地想要把你的源代码推送到存储的主干或者主要分支中。推送分支或者分叉代码返回主干的过程，就是指调用合并。
 
 ## 菜鸟Giter  
-* # [Install Git](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+* _[Install Git](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git)_
 
-* # Config and help  
-_这些是一些通用配置项,请根据个人情况自行修改._  
+* _Config and help_  
+这些是一些通用配置项,请根据个人情况自行修改.  
 ```
 $ git config --global user.name "yotoobo"  
 $ git config --global user.email yotoobo@gmail.com  
@@ -24,12 +24,12 @@ $ git config --global core.editor vim
 $ git Config --global push.default simple
 ```  
 
-  获取某一命令的帮助信息  
+获取某一命令的帮助信息  
 ```
-$ git help add 
+$ git help add
 ```  
 
-* # Getting and Create Projects  
+* _Getting and Create Projects_  
 创建一个本地空仓库  
 ``` 
 $ cd /path/to/targetDir  
@@ -43,4 +43,14 @@ $ git clone http[s]://host.xz[:port]/path/to/repo.git/
 $ git clone -l -s -n ./repo ./repocopy 
 ```
 
-* # 认识下git工作流
+* _了解下git工作流_
+![git工作流](https://github.com/yotoobo/config/blob/master/git/git-working-steps.png)
+
+*  _添加与提交_
+```
+cd newdir
+git init
+touch newfile
+git add newfile
+git commit -m "添加新文件"
+```
