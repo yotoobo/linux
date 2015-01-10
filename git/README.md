@@ -63,8 +63,10 @@ $ git checkout -b feature_x
 $ git checkout master
 切换到分支
 $ git checkout feature_x
+更新分支
+$ git checkout -B feature_x
 删除分支
-$ git checkout -d feature_x
+$ git branch -D feature_x
 推送分支到远程仓库
 $ git push origin <branch>
 ```  
