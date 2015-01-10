@@ -61,6 +61,8 @@ $ git commit -m "添加新文件"
 $ git checkout -b feature_x
 切换回主分支
 $ git checkout master
+切换到分支
+$ git checkout feature_x
 删除分支
 $ git checkout -d feature_x
 推送分支到远程仓库
@@ -68,4 +70,7 @@ $ git push origin <branch>
 ```  
   
 * _合并_
+```
+
+```
 
