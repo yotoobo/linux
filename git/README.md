@@ -17,13 +17,14 @@
 
 * Config and help  
 _这些是一些通用配置项,请根据个人情况自行修改._  
-  1. $ git config --global user.name "yotoobo"  
-  2. $ git config --global user.email yotoobo@gmail.com  
-  3. $ git config --global core.editor vim  
-  4. $ git Config --global push.default simple  
+```$ git config --global user.name "yotoobo"  
+$ git config --global user.email yotoobo@gmail.com  
+$ git config --global core.editor vim  
+$ git Config --global push.default simple```  
 
-获取某一命令的帮助信息  
-```$ git help add ```
+
+  获取某一命令的帮助信息  
+```$ git help add ```  
 
 * Getting and Create Projects  
 创建一个本地空仓库  
