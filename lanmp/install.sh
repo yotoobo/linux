@@ -3,7 +3,7 @@
 if [ -x `which yum` ];then
 	echo "Please waiting ..."
 else
-	echo "Sorry,your system wasn't match!!!"
+	echo "Sorry,now it's only working at CentOS6.x or RedHat6.x!!!"
 	exit 0
 fi
 
@@ -68,15 +68,7 @@ fi
 
 #install extension
 function Extension() {
-	cd ~
-	tar zxf intl-3.0.0.tgz
-	cd intl-3.0.0
-	phpize
-	./configure --enable-intl
-	make && make install
-	echo "extension=intl.so" >> /usr/local/php55/etc/php.d/extension.ini
-	cd ..
-	
+	cd ~/
 	wget http://pecl.php.net/get/memcache-3.0.8.tgz
 	tar zxf memcache-3.0.8.tgz
 	cd memcache-3.0.8
