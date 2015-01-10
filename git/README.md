@@ -25,12 +25,16 @@ $ git Config --global push.default simple
 ```  
 
   获取某一命令的帮助信息  
-```$ git help add ```  
+```
+$ git help add 
+```  
 
 * Getting and Create Projects  
 创建一个本地空仓库  
-``` $ cd /path/to/targetDir  
-    $ git init ```  
+``` 
+$ cd /path/to/targetDir  
+$ git init 
+```  
 克隆一个已存在的仓库  
 ``` 
 $ git clone ssh://[user@]host.xz[:port]/path/to/repo.git/  
