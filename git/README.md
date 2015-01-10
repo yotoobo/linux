@@ -65,4 +65,7 @@ $ git checkout master
 $ git checkout -d feature_x
 推送分支到远程仓库
 $ git push origin <branch>
-```
+```  
+  
+* _合并_
+
