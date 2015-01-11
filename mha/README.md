@@ -23,4 +23,6 @@
 | host4      | 192.168.1.120 | MHA-Manager         |  
 ```  
 * Install MHA-Node on host1 - host4
+```
+```
 * Install MHA-Manager on host4 
