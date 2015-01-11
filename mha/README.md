@@ -23,6 +23,44 @@
 | host4      | 192.168.1.120 | MHA-Manager         |  
 ```  
 * Install MHA-Node on host1 - host4
+In Centos or Redhat,do install from package 
 ```
+# yum install perl-DBD-MySQL
+# rpm -ivh mha4mysql-node-X.Y.noarch.rpm
 ```
+In Debian or ubuntu,do install from deb
+```
+$ sudo apt-get install libdbd-mysql-perl
+$ sudo dpkg -i mha4mysql-node_X.Y_all.deb  
+```
+Or install from source  
+$ tar zxf mha4mysql-node-X.Y.tar.gz
+$ cd mha4mysql-node-X.Y
+$ perl Makefile.PL
+$ make 
+$ sudo make install
+```
+_Note:相应软件包已放在当前目录下,可下载使用_  
+
 * Install MHA-Manager on host4 
+In Centos or Redhat,do install from package 
+```
+# yum install perl-DBD-MySQL perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager
+# rpm -ivh mha4mysql-manager-X.Y-0.noarch.rpm
+```  
+In Debian or ubuntu,do install from deb  
+```
+$ sudo apt-get install libdbd-mysql-perl libconfig-tiny-perl liblog-dispatch-perl libparallel-forkmanager-perl
+$ dpkg -i mha4mysql-manager_X.Y_all.deb
+```  
+
+Or install from source  
+```
+$ tar -zxf mha4mysql-manager-X.Y.tar.gz
+$ cd tar -zxf mha4mysql-manager-X.Y
+$ perl Makefile.PL
+$ make
+$ sudo make install
+```
+_Note:相应软件包已放在当前目录下,可下载使用_  
+
