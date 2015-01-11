@@ -11,8 +11,9 @@
 ![mha管理多组主从](https://github.com/yotoobo/config/blob/master/mha/mha.png)  
 
 ## Getting Started
-* replication environments
-  主从环境
+* replication environments  
+  初始化主从环境
 * 拓扑图
+
 * Install MHA-Node on host1 - host4
 * Install MHA-Manager on host4 
