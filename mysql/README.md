@@ -51,4 +51,4 @@ _NOTE: SLAVE端需要先开启半同步参数，然后启动从库复制，否�
 ```  
 * 参考文档
   1. [半同步原理介绍](http://www.orczhou.com/index.php/2011/07/why-and-how-mysql-5-5-semi-sync-replication/)
-  2. [半同步复制介绍2](http://www.mysqlsystems.com/2012/08/understand-mysql-semi-sync-replication.html)
+  2. [半同步复制介绍](http://www.mysqlsystems.com/2012/08/understand-mysql-semi-sync-replication.html)
