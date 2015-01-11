@@ -14,11 +14,13 @@
 * replication environments  
   初始化[主从环境](https://github.com/yotoobo/config/blob/master/mysql/README.md)
 * 拓扑关系  
+```
 | Hosts      | IP            | 角色                 |
 | ---------- |:-------------:| -------------------:|
 | host1      | 192.168.1.121 | Master and MHA-Node |
 | host2      | 192.168.1.122 | Slave  and MHA-Node |
 | host3      | 192.168.1.123 | Slave  and MHA-Node |
 | host4      | 192.168.1.120 | MHA-Manager         |  
+```  
 * Install MHA-Node on host1 - host4
 * Install MHA-Manager on host4 
