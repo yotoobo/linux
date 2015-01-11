@@ -7,12 +7,13 @@ mysql的复制是指一台服务器与多台服务器的数据保持同步,即�
   2. 负载均衡(将读操作分布到多个从库上,优化读密集型的应用)
   3. 高可用性和故障切换
 
-* ![复制如何工作](https://github.com/yotoobo/config/blob/master/mysql/mysql-replication.jpg)
+* 复制如何工作  
+  ![复制如何工作](https://github.com/yotoobo/config/blob/master/mysql/mysql-replication.jpg)
 * 配置复制
   1. 在每台机器上创建复制账号  
   2. 配置主库和备库  
   3. 通知备库连接到主库并开始复制数据  
-  _示例代码_  
+_示例代码_  
 ```
 创建复制账号
 mysql> grant replication slave,replication client on *.* to repUser@'192.168.1.%' identified by 'password';
