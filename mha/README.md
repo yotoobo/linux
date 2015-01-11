@@ -22,7 +22,7 @@
 | host3      | 192.168.1.123 | Slave  and MHA-Node |
 | host4      | 192.168.1.120 | MHA-Manager         |  
 ```  
-* Install MHA-Node on host1 - host4
+* Install MHA-Node on host1 - host4  
 In Centos or Redhat,do install from package 
 ```
 # yum install perl-DBD-MySQL
