@@ -46,6 +46,8 @@ _Note:相应软件包已放在当前目录下,可下载使用_
 * Install MHA-Manager on host4  
 In Centos or Redhat,do install from package  
 ```
+官方源缺失部分软件包,请使用epel
+# rpm -ivh http://mirrors.yun-idc.com/epel/6/x86_64/epel-release-6-8.noarch.rpm
 # yum install perl-DBD-MySQL perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager
 # rpm -ivh mha4mysql-manager-X.Y-0.noarch.rpm
 ```  
@@ -62,5 +64,5 @@ $ perl Makefile.PL
 $ make
 $ sudo make install
 ```
-_Note:相应软件包已放在当前目录下,可下载使用_  
+_Note:相应软件包已放在当前目录下,可下载使用._  
 
