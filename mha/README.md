@@ -34,6 +34,7 @@ $ sudo apt-get install libdbd-mysql-perl
 $ sudo dpkg -i mha4mysql-node_X.Y_all.deb  
 ```  
 Or install from source  
+```
 $ tar zxf mha4mysql-node-X.Y.tar.gz  
 $ cd mha4mysql-node-X.Y  
 $ perl Makefile.PL  
