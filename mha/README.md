@@ -17,7 +17,7 @@
   初始化[主从环境](https://github.com/yotoobo/config/blob/master/mysql/README.md)
 * 拓扑关系  
 ```
-| Hosts      | IP            | 角色                |
+| Hosts      | IP            | 角色                 |
 | ---------- |:-------------:| -------------------:|
 | host1      | 192.168.1.121 | Master and MHA-Node |
 | host2      | 192.168.1.122 | Slave  and MHA-Node |
@@ -68,5 +68,13 @@ $ sudo make install
 ```
 _Note:相应软件包已放在当前目录下,可下载使用._  
 
-* Configure
+* MHA Configure  
+配置
+
+
+* 参考文档  
+  1. ![https://code.google.com/p/mysql-master-ha/](MHA)  
+  2. ![Mysql高可用之MHA](http://www.cnblogs.com/gomysql/p/3675429.html)  
+  3. [Mysql大杀器之MHA](http://huoding.com/2011/12/18/139)
+
 
