@@ -73,8 +73,8 @@ _Note:相应软件包已放在当前目录下,可下载使用._
 
 
 * 参考文档  
-  1. ![https://code.google.com/p/mysql-master-ha/](MHA)  
-  2. ![Mysql高可用之MHA](http://www.cnblogs.com/gomysql/p/3675429.html)  
+  1. [https://code.google.com/p/mysql-master-ha/](MHA)  
+  2. [Mysql高可用之MHA](http://www.cnblogs.com/gomysql/p/3675429.html)  
   3. [Mysql大杀器之MHA](http://huoding.com/2011/12/18/139)
 
 
