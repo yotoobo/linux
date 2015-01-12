@@ -55,6 +55,25 @@ $ git add newfile
 $ git commit -m "添加新文件"
 ```  
 
+* _版本回退_  
+首先,要获取想要回退的版本的commit id
+```
+$ git log
+commit 3eac1fbbde1af2bd61506d666e071f7824f8d2ec
+Author: yotoobo <yotoobo@gmail.com>
+Date:   Mon Jan 12 20:12:46 2015 +0800
+
+    update git/README.md
+```  
+只要知道了commit id,那么我们就可以用git切换到任一版本
+```
+$ git reset --hard 3eac1fbbde1a
+```  
+还有一种方式表示版本,如HEAD表示当前版本,HEAD^1表示上一版本,HEAD^100表示上一百个版本  
+```
+$ git reset --hard HEAD^1
+```  
+
 * _分支_
 ```
 创建一个叫feature_x的分支并切换到feature_x
@@ -81,7 +100,7 @@ $ git add newfile
 $ git commit -m "vim newfile on branch"
 切换主分支
 $ git checkout master
-合并分支到主分支
+合并分支到当前
 $ git merge feature_x
 ```
-
+* 
