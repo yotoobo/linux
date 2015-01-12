@@ -12,7 +12,7 @@
   * 分支和分叉-这是一个常见的概念，即创建一个完整的存储拷贝。通常，你会听到一个沙盒代码的术语，它的意思是一个开发者已经分支或者分叉了一个项目存储。
   * 合并-如果你分支或者分叉了一个存储，那么你将不可避免地想要把你的源代码推送到存储的主干或者主要分支中。推送分支或者分叉代码返回主干的过程，就是指调用合并。
 
-## 菜鸟+++ 
+## Step by Step  
 * _[Install Git](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git)_
 
 * _Config and help_  
@@ -73,6 +73,15 @@ $ git push origin <branch>
   
 * _合并_
 ```
-
+切换到分支feature_x
+$ git checkout feature_x
+修改一个文件,add,commit
+$ vim newfile
+$ git add newfile
+$ git commit -m "vim newfile on branch"
+切换主分支
+$ git checkout master
+合并分支到主分支
+$ git merge feature_x
 ```
 
