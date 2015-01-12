@@ -43,7 +43,8 @@ $ git clone http[s]://host.xz[:port]/path/to/repo.git/
 $ git clone -l -s -n ./repo ./repocopy 
 ```
 
-* _了解下git工作流_
+* _了解下git工作流_  
+
 ![git工作流](https://github.com/yotoobo/config/blob/master/git/git-working-steps.png)
 
 *  _添加与提交_
