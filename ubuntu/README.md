@@ -49,3 +49,16 @@ Ctrl+Shift+N 或者 Ctrl+Tab 在分割的各窗口之间切换
 Ctrl+Shift+X 将分割的某一个窗口放大至全屏使用
 Ctrl+Shift+Z 从放大至全屏的某一窗口回到多窗格界面
 ```
+
+# 常用软件 
+docky,类似苹果的任务栏
+```
+$ sudo apt-get install docky
+`````  
+
+ubuntu tweak
+```
+
+`````  
+
+
