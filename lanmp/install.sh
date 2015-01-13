@@ -4,7 +4,7 @@ if [ -x `which yum` ];then
 	echo "Please waiting ..."
 else
 	echo "Sorry,now it's only working at CentOS6.x or RedHat6.x!!!"
-	exit 0
+	exit 
 fi
 
 function Exit() {	
