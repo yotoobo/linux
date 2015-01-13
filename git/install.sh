@@ -9,9 +9,10 @@ function end() {
 function first() {
 	if [ -f `which yum` ];then
 	    yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel wget unzip
-	fi
-	if [ -f `which apt-get` ];then 
+	elif [ -f `which apt-get` ];then 
 	    apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev wget unzip
+	else
+		echo "Sorry,this script only working on Ubuntu or Centos ..."
 	fi
 
 }
