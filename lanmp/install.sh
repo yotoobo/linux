@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -x `which yum` ];then
+if [ -x `which yum` ] && [ `grep 6 /etc/redhat-release|wc -l` -eq 1 ];then
 	echo "Please waiting ..."
 else
 	echo "Sorry,now it's only working at CentOS6.x or RedHat6.x!!!"
