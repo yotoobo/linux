@@ -7,7 +7,7 @@ _修改php.ini_
   * register_globals = Off
   * upload_max_filesize
   * max_execution_time
-  * error_log
+  * error_log  
 _修改php-fpm_
   * 使用多个进程池
   * 采用socket连接
