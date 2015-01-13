@@ -1,3 +1,11 @@
+# 安装字体  
+``` $ sudo sh get-fonts.sh ```  
+
+# 安装flash  
+```
+$ sudo apt-get install flashplugin-installer
+```  
+
 # 管理服务  
 ``` $ sudo apt-get install sysv-rc-conf ```
 
