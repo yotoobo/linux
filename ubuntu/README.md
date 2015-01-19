@@ -54,11 +54,8 @@ Ctrl+Shift+Z 从放大至全屏的某一窗口回到多窗格界面
 docky,类似苹果的任务栏
 ```
 $ sudo apt-get install docky
-`````  
-
-ubuntu tweak
 ```
-
-`````  
+ubuntu tweak
+network-manager-vpnc   plug for vpn (cisco)
 
 
