@@ -55,7 +55,8 @@ docky,类似苹果的任务栏
 ```
 $ sudo apt-get install docky
 ```
-ubuntu tweak
-network-manager-vpnc   plug for vpn (cisco)
+ubuntu tweak  
+network-manager-vpnc   plug for vpn (cisco)  
+
 
 
