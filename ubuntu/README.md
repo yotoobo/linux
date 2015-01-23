@@ -50,6 +50,24 @@ Ctrl+Shift+X 将分割的某一个窗口放大至全屏使用
 Ctrl+Shift+Z 从放大至全屏的某一窗口回到多窗格界面
 ```
 
+# ubuntu-make  
+```
+Installing Ubuntu Make
+
+If you are on Ubuntu 14.04 LTS, first, add the Ubuntu Make ppa:
+
+    $ sudo add-apt-repository ppa:ubuntu-desktop/ubuntu-make 
+    $ sudo apt-get update 
+
+Then, installing Ubuntu Make:
+
+    $ sudo apt-get install ubuntu-make 
+
+How to install android-studio
+
+    $ umake android 
+```
+
 # 常用软件 
 docky,类似苹果的任务栏
 ```
