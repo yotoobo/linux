@@ -1,3 +1,5 @@
+× 工作流程
+![工作流程](https://www.varnish-software.com/static/book/_images/request.png)
 * 安装  
 ```
 Varnish 4.0:
