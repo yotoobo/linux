@@ -1,3 +1,4 @@
+* Varnish版本为3.0.6
 * 工作流程
 ![工作流程](https://www.varnish-software.com/static/book/_images/request.png)
 * 安装  
@@ -33,4 +34,7 @@ VARNISH_STORAGE_FILE=/var/lib/varnish/varnish_storage.bin  #指定缓存文件
 VARNISH_STORAGE_SIZE=1G  #设置缓存大小，单位有k / M / G / T suffix
 VARNISH_STORAGE="malloc,16M"  #使用malloc，即内存缓存，大小16M
 VARNISH_TTL=120  #联系后端的超时时间
-```
+```  
+
+* VCL
+
