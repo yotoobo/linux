@@ -36,5 +36,48 @@ VARNISH_STORAGE="malloc,16M"  #使用malloc，即内存缓存，大小16M
 VARNISH_TTL=120  #联系后端的超时时间
 ```  
 
-* VCL
-
+* VCL Basics
+设置允许清理缓存的主机或网段
+```
+acl purgers {
+"127.0.0.1";
+"192.168.0.0/24";
+}
+```  
+设置后端主机  
+```
+backend default {
+  .host = "192.168.1.1";
+  .port = "80";
+  .probe = {  #健康监测
+    .url = "/";  #请求的url
+    .expected_response = 200;  #期望后端主机响应的状态码，默认为200；
+    .interval = 3s;  #请求的间隔时间
+    .window = 3;  #设定在判定后端主机健康状态时基于最近多少次的探测进行
+    .threshold = 2;  #在.window中指定的次数中，至少有多少次是成功的才判定后端主机正健康运行
+  }
+}
+ 
+backend backup {
+  .host = "192.168.1.2";
+  .port = "80";
+  .probe = { 
+    .url = "/";
+    .expected_response = 200;
+    .interval = 3s; 
+    .window = 3;
+    .threshold = 2;
+  }
+}
+ 
+director server client {  #定义主机池
+{
+  .backend = default;
+  .weight = 5;  #权重越高，分配的请求越多
+}
+{
+  .backend = backup;
+  .weight = 5;
+}
+}
+```  
