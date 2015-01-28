@@ -1,6 +1,6 @@
 * Varnish版本为3.0.6
-* 工作流程
-![工作流程](https://www.varnish-software.com/static/book/_images/request.png)
+* VCL流程
+![VCL流程](https://www.varnish-software.com/static/book/_images/vcl.png)
 * 安装  
 ```
 Varnish 4.0:
@@ -37,7 +37,7 @@ VARNISH_TTL=120  #联系后端的超时时间
 ```  
 
 * VCL Basics
-设置允许清理缓存的主机或网段
+设置允许清理缓存的主机或网段  
 ```
 acl purgers {
 "127.0.0.1";
