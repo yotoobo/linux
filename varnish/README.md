@@ -1,6 +1,7 @@
-* Varnish版本为3.0.6
-* VCL流程
-![VCL流程](https://www.varnish-software.com/static/book/_images/vcl.png)
+* 本文使用的版本为3.0.6  
+* [官方文档](https://www.varnish-software.com/static/book/index.html)  
+* VCL流程  
+![VCL流程](https://www.varnish-software.com/static/book/_images/vcl.png)  
 * 安装  
 ```
 Varnish 4.0:
@@ -36,12 +37,12 @@ VARNISH_STORAGE="malloc,16M"  #使用malloc，即内存缓存，大小16M
 VARNISH_TTL=120  #联系后端的超时时间
 ```  
 
-* VCL Basics
+* VCL   
 设置允许清理缓存的主机或网段  
 ```
 acl purgers {
 "127.0.0.1";
-"192.168.0.0/24";
+"192.168.0.0"/24;
 }
 ```  
 设置后端主机  
@@ -81,3 +82,15 @@ director server client {  #定义主机池
 }
 }
 ```  
+定义vcl_recv模块(接受和处理请求)  
+```
+sub vcl_recv {
+  set req.backend = server;
+  
+  
+}
+```
+
+
+
+
