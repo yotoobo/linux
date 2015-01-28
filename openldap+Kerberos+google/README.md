@@ -1,5 +1,5 @@
 ## 运维跳板机  
-* AAAA认证即：
+* AAAA认证即：  
   统一用户账号（Account）
   统一认证（Authentication）
   统一授权（Authorization）
