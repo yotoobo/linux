@@ -86,8 +86,6 @@ director server client {  #定义主机池
 ```
 sub vcl_recv {
   set req.backend = server;
-  
-  
 }
 ```
 
