@@ -5,15 +5,15 @@
   * [nginx-resources](https://github.com/fcambus/nginx-resources)  
   
 * 应用
-  * Nginx之反向代理
+  * Nginx之反向代理+负载均衡  
   示例代码
-  ```
+```
 upstream test.com_static {
     server 10.10.7.106:80;
 }
 upstream test.com_dynamic { #负载均衡
-    ip_hash;
-    server 10.10.7.109:80;
+    ip_hash; #负载算法
+    server 10.10.7.109:80 max_fails=3 fail_timeout=5s; #健康检测
     server 10.10.7.110:80;
     server 10.10.7.113:80;
 }
@@ -21,9 +21,9 @@ upstream test.com_dynamic { #负载均衡
 server {
     listen 80;
     server_name *.test.com;
-    access_log  logs/www.test.com.access.log main buffer=32k flush=10s;
+    access_log  logs/test.com.access.log main buffer=32k flush=10s;
     
-    location ~* \.(jpeg|jpg|png|gif|js|css)$ {
+    location ~* \.(jpeg|jpg|png|gif|js|css)$ { #做动静分离
         proxy_pass http://test.com_static;
         proxy_read_timeout 300;
         proxy_buffering off;
@@ -53,4 +53,7 @@ server {
         client_body_buffer_size 128k; 
     }
 }
-  ```
+```  
+  * Nginx之页面缓存  
+  
+
