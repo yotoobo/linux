@@ -69,10 +69,8 @@ How to install android-studio
 ```
 
 # 常用软件 
-docky,类似苹果的任务栏
-```
-$ sudo apt-get install docky
-```
+软件包管理:新立得软件包管理器
+docky:类似苹果的任务栏
 系统管理:ubuntu tweak  
 vpn插件:network-manager-vpnc  
 虚拟化:virtualbox  
@@ -81,5 +79,5 @@ ftp:Filezilla
 截图:shutter  
 词典:星际译王  
 影视:VLC,smplayer  
-下载:qBittorrent  
 IDE:Eclipse  
+制图:yEd
