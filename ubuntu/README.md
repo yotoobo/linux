@@ -81,3 +81,8 @@ ftp:Filezilla
 影视:VLC,smplayer  
 IDE:Eclipse  
 制图:yEd  
+
+
+## linuxmint 17 xfce
+* fcitx
+```sudo apt-get install fcitx fcitx-config-common fcitx-config-gtk fcitx-config-gtk2 fcitx-ui-classic  fcitx-table fcitx-frontend-all fcitx-googlepinyin ```  
