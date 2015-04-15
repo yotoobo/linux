@@ -87,3 +87,5 @@ IDE:Eclipse
 * fcitx  
 ```sudo apt-get install fcitx fcitx-config-common fcitx-config-gtk fcitx-config-gtk2 fcitx-ui-classic  fcitx-table fcitx-frontend-all fcitx-googlepinyin ```  
 
+* google-chrome
+```wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb```  
