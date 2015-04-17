@@ -89,3 +89,6 @@ IDE:Eclipse
 
 * google-chrome  
 ```wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb```  
+
+* chromium 
+```sudo apt-get install chromium-browser pepperflashplugin-nonfree```
