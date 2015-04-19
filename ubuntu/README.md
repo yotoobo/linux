@@ -90,5 +90,13 @@ IDE:Eclipse
 * google-chrome  
 ```wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb```  
 
-* chromium 
+* chromium   
 ```sudo apt-get install chromium-browser pepperflashplugin-nonfree```
+
+* docker  
+```
+echo "deb https://get.docker.com/ubuntu docker main" > /etc/apt/sources.list.d/docker.list
+sudo apt-get update
+sudo apt-get install lxc-docker apparmor
+sudo service docker start
+```
