@@ -1,0 +1,20 @@
+# the terminator config
+if [ -f `which terminator` ];then
+	if [ -x /usr/bin/dircolors ]; then
+		test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"	
+	fi
+fi
+
+# jdk
+if [ -d '/usr/java/jdk' ];then
+	JAVA_HOME=/usr/java/jdk
+	export JAVA_HOME
+	export CLASSPATH=.:JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+	PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+fi	
+
+
+# alias 
+alias vi=vim
+alias cl=clear
+alias gs='git status'
