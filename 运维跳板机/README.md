@@ -11,6 +11,6 @@ Kerberos
 google-authentication  
 
 * 工作图  
-![work](https://github.com/yotoobo/linux/blob/master/openldap%2BKerberos%2Bgoogle/2014052615432386.jpg)  
+![work](https://github.com/yotoobo/linux/blob/master/%E8%BF%90%E7%BB%B4%E8%B7%B3%E6%9D%BF%E6%9C%BA/2014052615432386.jpg)  
 
 
