@@ -10,5 +10,5 @@ $ docker pull image-name
 ```$ docker images ```  
 查看all容器  
 ```$ docker ps -a```  
-提交更改
+提交更改  
 ```$ docker commit -m "说明" -a "维护者信息" 容器ID 目标镜像仓库名:tag ```
