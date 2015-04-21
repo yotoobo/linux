@@ -1,8 +1,0 @@
-# 快速使用docker
-0.安装docker
-1.搜索镜像
-```docker search image-name```  
-2.拉取镜像  
-```docker pull image-name```  
-3.运行容器,--name 分派容器的名字，-t   
-```docker run --name -t -i image-name app-name```  
