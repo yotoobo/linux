@@ -90,6 +90,10 @@ $ git branch -D feature_x
 推送分支到远程仓库
 $ git push origin <branch>
 ```  
+------------------分割----------------------------  
+* _远程分支_  
+如果使用 git clone 克隆，Git 会自动为你将此远程仓库命名为 origin，并下载其中所有的数据，建立一个指向它的 master 分支的指针，在本地命名为 origin/master，但你无法在本地更改其数据。接着，Git 建立一个属于你自己的本地 master 分支，始于 origin 上 master 分支相同的位置，你可以就此开始工作(基于本地master分支工作r)
+
   
 * _合并_
 ```
