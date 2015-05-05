@@ -1,3 +1,8 @@
+* 准备工作  
+CPU是否支持虚拟化  
+```egrep '(vmx|svm)' --color=always /proc/cpuinfo```  
+关闭selinux  
+
 * 安装kvm  
 on centos/rhel 6,  
 ```	
