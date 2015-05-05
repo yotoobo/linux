@@ -43,18 +43,18 @@ use virt-install,
 virt-install --name=vm1_171 --ram 2048 --vcpus=2 --disk path=/home/kvm/vm1_171.img,size=50,bus=virtio --accelerate --cdrom /home/nginx/CentOS-6.5-x86_64-bin-DVD1.iso --hvm --vnc --vncport=5910 --vnclisten=0.0.0.0 --network bridge=br0,model=virtio --noautoconsole
 ```  
 
-* 使用vnc viewer连接guest
-windows，
+* 使用vnc viewer连接guest  
+windows，  
   tightvnc viewer  
 
-* guest 基本操作  
-查看  
-```virsh list --all```  
+* guest 基本操作    
+查看    
+```virsh list --all```    
 启动  
-```virsh start name```  
-```virsh create /etc/libvirt/qemu/name.xml```  
-guest自动启动  
-```virsh autostart name
+```virsh start name```    
+```virsh create /etc/libvirt/qemu/name.xml```    
+guest自动启动    
+```virsh autostart name```  
 关机  
 ```virsh shutdown name```  
 强制关闭  
