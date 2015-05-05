@@ -1,9 +1,8 @@
 * 安装kvm  
 on centos/rhel 6,  
 ```	
-yum install kvm libvirt python-virtinst qemu-kvm bridge-utils 
-service libvirtd start
-
+yum install kvm libvirt python-virtinst qemu-kvm bridge-utils libguestfs-tools virt-top  
+service libvirtd start  
 ```  
 
 * 配置bridge  
@@ -51,18 +50,27 @@ windows，
 查看    
 ```virsh list --all```    
 启动  
-```virsh start name```    
-```virsh create /etc/libvirt/qemu/name.xml```    
+```virsh start vm1_171```    
+```virsh create /etc/libvirt/qemu/vm1_171.xml```    
 guest自动启动    
-```virsh autostart name```  
+```virsh autostart vm1_171```  
 关机  
-```virsh shutdown name```  
+```virsh shutdown vm1_171```  
 强制关闭  
-```virsh destroy name```  
+```virsh destroy vm1_171```  
 导出guest配置文件  
-```virsh dumpxml name > /etc/libvirt/qemu/name2.xml ```  
+```virsh dumpxml vm1_171 > /etc/libvirt/qemu/name2.xml ```  
 编辑guest配置文件  
-```virsh edit name```  
+```virsh edit vm1_171```  
 删除  
-```virsh undefine name```  
+```virsh undefine vm1_171```  
 
+* 克隆  
+```virt-clone -o vm1_171 -n vm1_172 --file /home/kvm/vm1_172.img```  
+修改vm1_172的网卡配置,  
+```virt-edit -d vm1_172 /etc/sysconfig/network-scripts/ifcfg-eth0```  
+
+
+* 参考
+http://www.linux-kvm.org/page/Main_Page
+http://koumm.blog.51cto.com/703525/1288795
