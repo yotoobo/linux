@@ -2,7 +2,7 @@
 CPU是否支持虚拟化  
 ```egrep '(vmx|svm)' --color=always /proc/cpuinfo```  
 关闭selinux  
-调整iptables(测试环境可直接关闭)
+调整iptables(测试环境可直接关闭)  
 
 * 安装kvm  
 on centos/rhel 6,  
@@ -10,6 +10,8 @@ on centos/rhel 6,
 yum install kvm libvirt python-virtinst qemu-kvm bridge-utils libguestfs-tools virt-top  
 service libvirtd start  
 ```  
+on ubuntu 14/mint 17,  
+```sudo apt-get install kvm qemu virtinst python-libvirt virt-viewer virt-manager```  
 
 * 配置bridge  
 on centos/rhel 6,  
@@ -41,6 +43,21 @@ NM_CONTROLLED=yes
 BOOTPROTO=none
 BRIDGE=br0
 ```
+on ubuntu 14/mint 17,   
+```
+$cat /etc/network/interfaces
+auto lo
+iface lo inet loopback
+auto eth0
+iface eth0 inet manual
+auto br0
+iface br0 inet static
+address 10.49.1.171
+netmask 255.255.0.0
+gateway 10.49.0.1
+bridge_ports eth0
+
+```   
 
 * 创建guest  
 use virt-install,  
