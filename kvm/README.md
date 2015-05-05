@@ -71,6 +71,6 @@ guest自动启动
 ```virt-edit -d vm1_172 /etc/sysconfig/network-scripts/ifcfg-eth0```  
 
 
-* 参考
-http://www.linux-kvm.org/page/Main_Page
-http://koumm.blog.51cto.com/703525/1288795
+* 参考  
+http://www.linux-kvm.org/page/Main_Page  
+http://koumm.blog.51cto.com/703525/1288795  
