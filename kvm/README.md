@@ -94,7 +94,8 @@ guest自动启动
 ```virt-edit -d vm1_172 /etc/sysconfig/network-scripts/ifcfg-eth0```  
 
 * 虚拟化管理平台  
-ConVirt   
+ConVirt  
+http://www.convirture.com/wiki/index.php?title=Main_Page  
 
 * 参考  
 http://www.linux-kvm.org/page/Main_Page  
