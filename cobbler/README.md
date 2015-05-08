@@ -2,7 +2,7 @@
 on centos6/rhel6,  
 ```
 rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-yum -y install cobbler fence-agents
+yum -y install cobbler fence-agents pykickstart
 chkconfig cobblerd on
 chkconfig httpd on
 service cobblerd start
