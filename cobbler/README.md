@@ -1,5 +1,7 @@
 * 安装cobbler  
+on centos6/rhel6,  
 ```
+rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 yum -y install cobbler fence-agents
 chkconfig cobblerd on
 chkconfig httpd on
