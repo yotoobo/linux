@@ -62,8 +62,13 @@ bridge_ports eth0
 * 创建guest  
 use virt-install,  
 ```
-virt-install --name=vm1_171 --ram 2048 --vcpus=2 --disk path=/home/kvm/vm1_171.img,format=qcow2,size=50,bus=virtio --accelerate --cdrom /home/nginx/CentOS-6.5-x86_64-bin-DVD1.iso --hvm --vnc --vncport=5910 --vnclisten=0.0.0.0 --network bridge=br0,model=virtio --noautoconsole
+virt-install --name=vm1_171 --ram 2048 --vcpus=2 --disk path=/home/kvm/vm1_171.img,format=raw,size=50,bus=virtio --accelerate --cdrom /home/nginx/CentOS-6.5-x86_64-bin-DVD1.iso --hvm --vnc --vncport=5910 --vnclisten=0.0.0.0 --network bridge=br0,model=virtio --noautoconsole
 ```  
+相比较raw格式，qcow2格式支持的功能更多，  
+```
+qemu-img create -f qcow2 /home/kvm/vm1_171.qcow2 50g
+virt-install --name=vm1_171 --ram 2048 --vcpus=2 --disk path=/home/kvm/vm1_171.qcow2,format=qcow2,size=50,bus=virtio --accelerate --cdrom /home/nginx/CentOS-6.5-x86_64-bin-DVD1.iso --hvm --vnc --vncport=5910 --vnclisten=0.0.0.0 --network bridge=br0,model=virtio --noautoconsole
+```
 
 * 使用vnc viewer连接guest  
 windows，  
