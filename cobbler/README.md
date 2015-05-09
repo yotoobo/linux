@@ -2,9 +2,10 @@
 on centos6/rhel6,  
 ```
 rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-yum -y install cobbler fence-agents pykickstart
+yum -y install cobbler fence-agents pykickstart dnsmasq
 chkconfig cobblerd on
 chkconfig httpd on
+chkconfig dnsmasq on
 service cobblerd start
 service httpd start
 ```  
@@ -22,12 +23,11 @@ vi /etc/cobbler/setting
     pxe_just_once：1
     next_server：<服务器的 IP 地址>
     server：<服务器的 IP 地址
+    default_password_crypted: "use openssl passwd -1"
 ```  
 
 * 采用dnsmasq提供dns和dhcp服务  
 ```
-yum -y install dnsmasq  
-
 vi /etc/cobbler/modules.conf
 修改内容如下
 [dns]
@@ -39,7 +39,7 @@ module = manage_in_tftpd
 
 vi /etc/cobbler/dnsmasq.template
 修改内容如下
-dhcp-range=起始IP,终止IP,子网掩码
+dhcp-range=起始IP,终止IP
 ```  
 
 * 更新cobbler  
@@ -50,9 +50,9 @@ cobbler sync
 ```  
 
 * 安装Centos6.5  
-拷贝安装文件  
+导入安装文件  
 ```
-mount -t iso9660 -o loop,ro /path/to/CentOS-6.5-x86_64-bin-DVD1.iso /mnt/
+mount -t iso9660 -o loop,ro ~/CentOS-6.5-x86_64-bin-DVD1.iso /mnt/
 cobbler import --name=centos6.5 --arch=x86_64 --path=/mnt/
 cobbler distro report
 cobbler profile report
