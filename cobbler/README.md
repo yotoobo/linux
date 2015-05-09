@@ -57,4 +57,5 @@ cobbler import --name=centos6.5 --arch=x86_64 --path=/mnt/
 cobbler distro report
 cobbler profile report
 ```  
-创建配置文件  
+
+* 创建配置文件  
