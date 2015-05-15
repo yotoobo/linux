@@ -1,8 +1,11 @@
 * Capistrano  
 Capistrano is a utility and framework for executing commands in parallel on multiple remote machines, via SSH.  
+  [rubygems](https://rubygems.org/gems/capistrano/versions/2.15.5)  
+  [github](https://github.com/capistrano/capistrano)
 
 * Install Capistrano  
-准备工作  
+依赖环境  
+  ```yum install git svn mercurial```
   [构建ruby环境](https://ruby-china.org/wiki/install_ruby_guide)  
 安装Capistrano  
   ```gem install capistrano -v 2.15.5```  
@@ -10,3 +13,5 @@ Capistrano is a utility and framework for executing commands in parallel on mult
 * capfile  
   [示例](https://ruby-china.org/wiki/capistrano-2_x-getting-started)  
 
+* 文档    
+  [capistrano info](http://www.rubydoc.info/gems/capistrano/2.15.5)
