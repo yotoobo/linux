@@ -1,5 +1,4 @@
 * Capistrano  
-Capistrano is a utility and framework for executing commands in parallel on multiple remote machines, via SSH.  
   [rubygems](https://rubygems.org/gems/capistrano/versions/2.15.5)  
   [github](https://github.com/capistrano/capistrano)
 
