@@ -24,5 +24,5 @@
    如发现文件同步延迟过大，可适当调小上述参数  
 
 6. 交流  
-   论坛 http://bbs.chinaunix.net/forum-240-1.html
-   QQ   164684842
+   [论坛](http://bbs.chinaunix.net/forum-240-1.html)  
+   QQ 164684842  
