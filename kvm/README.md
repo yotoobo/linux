@@ -102,6 +102,14 @@ guest自动启动
 ConVirt  
 http://www.convirture.com/wiki/index.php?title=Main_Page  
 
+* 优化  
+```
+yum install tuned tuned-admin
+service tuned start
+/etc/init.d/ktune start
+tuned-adm profile [virtual-host|virtual-guest]
+```  
+
 * 参考  
 http://www.linux-kvm.org/page/Main_Page  
 http://koumm.blog.51cto.com/703525/1288795  
