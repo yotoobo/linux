@@ -8,6 +8,8 @@
   * mogilefs  
 
 # Fastdfs 部署  
+0. [安装](http://nongzusa.com/blog/2013/11/03/FastDFS-install/)  
+
 1. 建议使用单盘mount，多盘配置多个store_path
 
 2. max_connections: max_connections * butter_size = 消耗内存
