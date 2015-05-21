@@ -22,6 +22,10 @@ $ docker pull image-name
 * 终止容器  
 ```$ docker stop ID```  
 
+* 进入容器  
+使用docker attach ID  
+使用nsenter  
+
 * 提交更改  
 ```$ docker commit -m "说明" -a "维护者信息" 容器ID 目标镜像仓库名:tag ```  
 
