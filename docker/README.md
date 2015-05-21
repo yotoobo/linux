@@ -1,14 +1,33 @@
 # 常用docker选项  
-搜索并拉取镜像
+
+* 搜索并拉取镜像
 ```
 $ docker search image-name
 $ docker pull image-name
 ```  
-运行容器  
-```$ docker run -t -i image-name ```  
-查看镜像  
+* 查看镜像  
 ```$ docker images ```  
-查看all容器  
+
+* 运行容器  
+启动一个新容器  
+```$ docker run -t -i image-name ```  
+其中，-t 选项让Docker分配一个伪终端（pseudo-tty）并绑定到容器的标准输入上， -i 则让容器的标准输入保持打开  
+启动已终止容器  
+```$ docker start ID ```  
+如果需要容器在后台保持运行，添加参数 -d  
+
+* 查看all容器  
 ```$ docker ps -a```  
-提交更改  
-```$ docker commit -m "说明" -a "维护者信息" 容器ID 目标镜像仓库名:tag ```
+
+* 终止容器  
+```$ docker stop ID```  
+
+* 提交更改  
+```$ docker commit -m "说明" -a "维护者信息" 容器ID 目标镜像仓库名:tag ```  
+
+* 移除  
+移除镜像  
+```docker rmi image-name```  
+移除容器  
+```docker rm ID```  
+
