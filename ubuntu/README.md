@@ -1,26 +1,26 @@
-### 常见问题  
-* shutter 不能编辑图片
+#### 常见问题  
+* shutter 不能编辑图片  
 ```sudo apt-get install libgoo-canvas-perl```  
 
-### 安装字体  
+#### 安装字体  
 ``` $ sudo sh get-fonts.sh ```  
 
-### 安装flash  
+#### 安装flash  
 ```
 $ sudo apt-get install flashplugin-installer
 ```  
 
-### 管理服务  
+#### 管理服务  
 ``` $ sudo apt-get install sysv-rc-conf ```
 
-### 自定义默认软件  
+#### 自定义默认软件  
 ```
 $ sudo update-alternatives --install /usr/bin/java java /usr/java/jdk/bin/java 300
 $ sudo update-alternatives --install /usr/bin/javac javac /usr/java/jdk/bin/javac 300
 更多用法请参考help
 ```  
 
-### 使用Terminator作为默认终端
+#### 使用Terminator作为默认终端
 安装
 ```
 $ sudo add-apt-repository ppa:gnome-terminator
@@ -54,7 +54,7 @@ Ctrl+Shift+X 将分割的某一个窗口放大至全屏使用
 Ctrl+Shift+Z 从放大至全屏的某一窗口回到多窗格界面
 ```
 
-### ubuntu-make  
+#### ubuntu-make  
 ```
 Installing Ubuntu Make
 
@@ -72,7 +72,7 @@ How to install android-studio
     $ umake android 
 ```
 
-### 常用软件 
+#### 常用软件 
 软件包管理:新立得软件包管理器  
 docky:类似苹果的任务栏  
 系统管理:ubuntu tweak  
@@ -87,7 +87,7 @@ IDE:Eclipse
 制图:yEd  
 
 
-### linuxmint 17 xfce
+#### linuxmint 17 xfce
 * fcitx  
 ```sudo apt-get install fcitx fcitx-config-common fcitx-config-gtk fcitx-config-gtk2 fcitx-ui-classic  fcitx-table fcitx-frontend-all fcitx-googlepinyin ```  
 
@@ -97,11 +97,4 @@ IDE:Eclipse
 * chromium   
 ```sudo apt-get install chromium-browser pepperflashplugin-nonfree```
 
-* docker  
-```
-echo "deb https://get.docker.com/ubuntu docker main" > /etc/apt/sources.list.d/docker.list
-sudo apt-get update
-sudo apt-get install lxc-docker apparmor
-sudo service docker start
-```  
 
