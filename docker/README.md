@@ -1,4 +1,4 @@
-# 安装Docker  
+## 安装Docker  
 * ubuntu >= 14.04  
 ```
 $ sudo apt-get install apt-transport-https
@@ -25,7 +25,11 @@ $ sudo yum install docker-io
 * 启动服务  
 ```service docker start```
 
-# 常用docker选项  
+### 常用docker 命令  
+* 镜像加速  
+如果在国内拉取官方镜像，那速度就是不堪入目。所以要使用加速器。这里我推荐使用alauda和daocloud的加速器。
+在官网注册账号，然后根据提示操作即可。  
+
 * 搜索并拉取镜像
 ```
 $ docker search image-name
@@ -55,9 +59,15 @@ $ docker pull image-name
 * 提交更改  
 ```$ docker commit -m "说明" -a "维护者信息" 容器ID 目标镜像仓库名:tag ```  
 
+* push镜像  
+```$ docker push 目标镜像仓库名:tag```  
+
 * 移除  
 移除镜像  
 ```docker rmi image-name```  
 移除容器  
 ```docker rm ID```  
+移除所有容器  
+```for i in `docker ps -a|awk '{print $1}'|grep -v CONTAINER`;do docker rm $i;done```  
+
 
