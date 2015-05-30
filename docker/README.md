@@ -70,4 +70,19 @@ $ docker pull image-name
 移除所有容器  
 ```for i in `docker ps -a|awk '{print $1}'|grep -v CONTAINER`;do docker rm $i;done```  
 
+* 数据卷  
+使用-v 创建数据卷并挂载到容器中  
+```docker run -t -i -v /data:/data --name volumes centos /bin/bash```  
+如果需要在多容器共享数据，可以使用数据卷容器  
+```
+docker run -v /data:/data --name data centos echo This is DATA VOLUMES
+docker run -t -i --volumes-from data centos /bin/bash
+```  
+数据卷备份  
+```docker run -v $(PWD):/tmp --volumes-from data centos tar zcf /tmp/data.tgz /data```  
+数据卷导入  
+```docker run -v $(PWD):/tmp --volumes-frpm data centos tar zxf /tmp/data.tgz -C /data```  
+
+
+
 
