@@ -21,6 +21,8 @@ $ sudo reboot
 $ sudo yum install http://mirrors.yun-idc.com/epel/6/x86_64/epel-release-6-8.noarch.rpm
 $ sudo yum install docker-io
 ```  
+* 添加用户到docker组  
+```sudo gpasswd -a ${USER} docker```  
 
 * 启动服务  
 ```service docker start```
