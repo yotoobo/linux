@@ -16,4 +16,5 @@ _修改php-fpm_
   * pm = static  
 
 ## 参考
-  * [优化杂谈](http://huoding.com/2014/12/25/398)
+  * [优化杂谈](http://huoding.com/2014/12/25/398)  
+  * [PHP – Best Practises](http://thisinterestsme.com/php-best-practises/)
