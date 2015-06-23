@@ -94,7 +94,20 @@ IDE:Eclipse
 * google-chrome  
 ```wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb```  
 
-* chromium   
-```sudo apt-get install chromium-browser pepperflashplugin-nonfree```
+* 安装常用软件  
+```
+sudo add-apt-repository ppa:no1wantdthisname/ppa
+sudo add-apt-repository ppa:no1wantdthisname/openjdk-fontfix
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install fontconfig-infinality
 
+sudo apt-get install chromium-browser pepperflashplugin-nonfree preload vim git compizconfig-settings-manager bum dockey conky shutter 
+```  
+
+* set vm.swappiness  
+```sudo echo "vm.swappiness=1" >> /etc/sysctl.conf```  
+
+* set tmpfs  
+```sudo echo "tmpfs /tmp tmpfs defaults,noexec,nosuid 0 0" >> /etc/fstab```
 
