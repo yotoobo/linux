@@ -42,11 +42,11 @@ mysql5.5之前的复制是异步复制,主库在执行完一些事务后，是�
   2. 开启semi-sync插件
 ```
 on the Master
-mysql> INSTALL PLUGIN rpl_semi_sync_master SONAME ‘semisync_master.so';
+mysql> INSTALL PLUGIN rpl_semi_sync_master SONAME 'semisync_master.so';
 mysql> SET GLOBAL rpl_semi_sync_master_enabled = 1;
 mysql> SET GLOBAL rpl_semi_sync_master_timeout = 1000;  # 1 second
 on the Slave
-mysql> INSTALL PLUGIN rpl_semi_sync_slave SONAME ‘semisync_slave.so';
+mysql> INSTALL PLUGIN rpl_semi_sync_slave SONAME 'semisync_slave.so';
 mysql> SET GLOBAL rpl_semi_sync_slave_enabled = 1;
 mysql> START SLAVE;
 ```
