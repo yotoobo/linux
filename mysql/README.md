@@ -1,4 +1,4 @@
-## 复制  
+### 复制  
 
 *  概述  
 mysql的复制是指一台服务器与多台服务器的数据保持同步,即一主多从.它是Mysql水平扩容的最易实现,最成熟的方案(个人这么认为哈!)!
@@ -50,8 +50,17 @@ mysql> INSTALL PLUGIN rpl_semi_sync_slave SONAME 'semisync_slave.so';
 mysql> SET GLOBAL rpl_semi_sync_slave_enabled = 1;
 mysql> START SLAVE;
 ```
-_NOTE: SLAVE端需要先开启半同步参数，然后启动从库复制，否则，Rpl_semi_sync_slave_status的状态始终为：OFF。_  
+_NOTE: SLAVE端需要先开启半同步参数，然后启动从库复制，否则，Rpl_semi_sync_slave_status的状态始终为：OFF。另外把半同步参数写入my.cnf中，避免mysql重启后恢复OFF_  
 
 * 参考文档
   1. [半同步原理介绍](http://www.orczhou.com/index.php/2011/07/why-and-how-mysql-5-5-semi-sync-replication/)
   2. [半同步复制介绍](http://www.mysqlsystems.com/2012/08/understand-mysql-semi-sync-replication.html)
+
+### Mysql高可用
+* MMM  
+* MHA  
+
+
+
+
+
