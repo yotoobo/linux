@@ -50,7 +50,7 @@ In Centos or Redhat,do install from package
 官方源缺失部分软件包,请安装对应的[epel源](http://fedoraproject.org/wiki/EPEL)
 ```
 # rpm -ivh http://mirrors.yun-idc.com/epel/6/x86_64/epel-release-6-8.noarch.rpm
-# yum install perl-DBD-MySQL perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager
+# yum install perl-DBD-MySQL perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager perl-Time-HiRes
 # rpm -ivh mha4mysql-manager-X.Y-0.noarch.rpm
 ```  
 In Debian or ubuntu,do install from deb  
