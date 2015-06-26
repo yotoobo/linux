@@ -17,14 +17,13 @@
   初始化[主从环境](https://github.com/yotoobo/config/blob/master/mysql/README.md)
 * 拓扑关系  
 ```
-| Hosts      | IP            | 角色                 |
-| ---------- |:-------------:| -------------------:|
-| host1      | 192.168.1.121 | Master and MHA-Node |
-| host2      | 192.168.1.122 | Slave  and MHA-Node |
-| host3      | 192.168.1.123 | Slave  and MHA-Node |
-| host4      | 192.168.1.120 | MHA-Manager         |  
+| Hosts      | IP            | 角色                            |
+| ---------- | ------------- | ------------------------------- |
+| master     | 192.168.1.121 | Master and MHA-Node             |
+| slave1     | 192.168.1.122 | Slave  and MHA-Node             |
+| slave2     | 192.168.1.123 | Slave  and MHA-Node MHA-Manager |
 ```  
-* Install MHA-Node on host1 - host4  
+* Install MHA-Node on all hosts  
 In Centos or Redhat,do install from package 
 ```
 # yum install perl-DBD-MySQL
@@ -68,12 +67,176 @@ $ sudo make install
 ```
 _Note:相应软件包已放在当前目录下,可下载使用._  
 
-* MHA Configure  
-配置
+* SSH 免密码登录  
 
+* MHA Configure  
+示例配置文件在源码包内
+```
+cat /etc/mha/app1.conf
+[server default]
+manager_workdir=/var/log/masterha/app1
+manager_log=/var/log/masterha/app1/manager.log
+
+master_binlog_dir=/home/user/mysql/data
+master_ip_failover_script=/usr/local/bin/master_ip_failover
+master_ip_online_change_script=/usr/local/bin/master_ip_online_change
+user=admin
+password=123456
+ping_interval=1
+remote_workdir=/tmp
+repl_password=password
+repl_user=repUser
+report_script=/usr/local/bin/send_report
+secondary_check_script=/usr/bin/masterha_secondary_check -s slave1 -s master --user=root --master_host=master --master_ip=192.168.1.121 --master_port=3306
+ssh_user=root
+
+[server1]
+hostname=master
+port=3306
+
+[server2]
+hostname=slave1
+port=3306
+candidate_master=1
+
+
+[server3]
+hostname=slave2
+port=3306
+```  
+```
+cat master_ip_failover
+#!/usr/bin/env perl
+
+#  Copyright (C) 2011 DeNA Co.,Ltd.
+#
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 of the License, or
+#  (at your option) any later version.
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#   along with this program; if not, write to the Free Software
+#  Foundation, Inc.,
+#  51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+
+## Note: This is a sample script and is not complete. Modify the script based on your environment.
+
+use strict;
+use warnings FATAL => 'all';
+
+use Getopt::Long;
+use MHA::DBHelper;
+
+my (
+  $command,        $ssh_user,         $orig_master_host,
+  $orig_master_ip, $orig_master_port, $new_master_host,
+  $new_master_ip,  $new_master_port,  $new_master_user,
+  $new_master_password
+);
+
+my $vip = '10.49.1.180';
+my $key = '2';
+my $ssh_start_vip = '/sbin/ifconfig eth1:$key $vip';
+my $ssh_stop_vip = '/sbin/ifconfig eth1:$key down';
+$ssh_user = 'root';
+
+GetOptions(
+  'command=s'             => \$command,
+  'ssh_user=s'            => \$ssh_user,
+  'orig_master_host=s'    => \$orig_master_host,
+  'orig_master_ip=s'      => \$orig_master_ip,
+  'orig_master_port=i'    => \$orig_master_port,
+  'new_master_host=s'     => \$new_master_host,
+  'new_master_ip=s'       => \$new_master_ip,
+  'new_master_port=i'     => \$new_master_port,
+  'new_master_user=s'     => \$new_master_user,
+  'new_master_password=s' => \$new_master_password,
+);
+
+exit &main();
+
+sub main {
+  if ( $command eq "stop" || $command eq "stopssh" ) {
+
+    # $orig_master_host, $orig_master_ip, $orig_master_port are passed.
+    # If you manage master ip address at global catalog database,
+    # invalidate orig_master_ip here.
+    my $exit_code = 1;
+    eval {
+
+      # updating global catalog, etc
+      print "Disabling the VIP on old master: $orig_master_host \n";
+      &stop_vip();
+      $exit_code = 0;
+    };
+    if ($@) {
+      warn "Got Error: $@\n";
+      exit $exit_code;
+    }
+    exit $exit_code;
+  }
+  elsif ( $command eq "start" ) {
+
+    # all arguments are passed.
+    # If you manage master ip address at global catalog database,
+    # activate new_master_ip here.
+    # You can also grant write access (create user, set read_only=0, etc) here.
+    my $exit_code = 10;
+    eval {
+      print "Enabling the VIP - $vip on the new master - $new_master_host \n";
+      &start_vip();
+      $exit_code = 0;
+    };
+    if ($@) {
+      warn $@;
+
+      # If you want to continue failover, exit 10.
+      exit $exit_code;
+    }
+    exit $exit_code;
+  }
+  elsif ( $command eq "status" ) {
+
+    # do nothing
+    print "Checking the Status of the script.. OK \n";
+    `ssh $ssh_user\@cluster1 \" $ssh_start_vip \"`;
+    exit 0;
+  }
+  else {
+    &usage();
+    exit 1;
+  }
+}
+
+sub start_vip() {
+    `ssh $ssh_user\@$new_master_host \" $ssh_start_vip \"`;
+}
+
+sub stop_vip() {
+    `ssh $ssh_user\@$orig_master_host \" $ssh_stop_vip \"`;
+}
+
+sub usage {
+  print
+"Usage: master_ip_failover --command=start|stop|stopssh|status --orig_master_host=host --orig_master_ip=ip --orig_master_port=port --new_master_host=host --new_master_ip=ip --new_master_port=port\n";
+}
+
+```  
+
+* 执行检测  
+在slave2上  
+1. masterha_check_ssh --conf=/etc/mha/app1.cnf  
+2. masterha_check_repl --conf=/etc/mha/app1.cnf  
+3. masterha_check_status --conf=/etc/mha/app1.cnf 
 
 * 参考文档  
-  1. [https://code.google.com/p/mysql-master-ha/](MHA)  
+  1. [MHA](https://code.google.com/p/mysql-master-ha/)  
   2. [Mysql高可用之MHA](http://www.cnblogs.com/gomysql/p/3675429.html)  
   3. [Mysql大杀器之MHA](http://huoding.com/2011/12/18/139)
 
