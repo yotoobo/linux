@@ -20,9 +20,13 @@
 | Hosts      | IP            | 角色                            |
 | ---------- | ------------- | ------------------------------- |
 | master     | 192.168.1.121 | Master and MHA-Node             |
+|              192.168.1.120 | VIP                             |  
 | slave1     | 192.168.1.122 | Slave  and MHA-Node             |
 | slave2     | 192.168.1.123 | Slave  and MHA-Node MHA-Manager |
 ```  
+在master上手动执行  
+```ifconfig eth1:1 192.168.1.120/24```  
+
 * Install MHA-Node on all hosts  
 In Centos or Redhat,do install from package 
 ```
@@ -44,7 +48,7 @@ $ sudo make install
 ```  
 _Note:相应软件包已放在当前目录下,可下载使用_  
 
-* Install MHA-Manager on host4  
+* Install MHA-Manager on slave2  
 In Centos or Redhat,do install from package  
 官方源缺失部分软件包,请安装对应的[epel源](http://fedoraproject.org/wiki/EPEL)
 ```
@@ -109,130 +113,99 @@ port=3306
 cat master_ip_failover
 #!/usr/bin/env perl
 
-#  Copyright (C) 2011 DeNA Co.,Ltd.
-#
-#  This program is free software; you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation; either version 2 of the License, or
-#  (at your option) any later version.
-#
-#  This program is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#   along with this program; if not, write to the Free Software
-#  Foundation, Inc.,
-#  51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-
-## Note: This is a sample script and is not complete. Modify the script based on your environment.
-
 use strict;
 use warnings FATAL => 'all';
 
 use Getopt::Long;
-use MHA::DBHelper;
 
 my (
-  $command,        $ssh_user,         $orig_master_host,
-  $orig_master_ip, $orig_master_port, $new_master_host,
-  $new_master_ip,  $new_master_port,  $new_master_user,
-  $new_master_password
+    $command,          $ssh_user,        $orig_master_host, $orig_master_ip,
+    $orig_master_port, $new_master_host, $new_master_ip,    $new_master_port
 );
 
-my $vip = '192.168.1.100';
+my $vip = '192.168.1.120/24';
 my $key = '1';
-my $ssh_start_vip = '/sbin/ifconfig eth1:$key $vip';
-my $ssh_stop_vip = '/sbin/ifconfig eth1:$key down';
-$ssh_user = 'root';
+my $ssh_start_vip = "/sbin/ifconfig eth1:$key $vip";
+my $ssh_stop_vip = "/sbin/ifconfig eth1:$key down";
 
 GetOptions(
-  'command=s'             => \$command,
-  'ssh_user=s'            => \$ssh_user,
-  'orig_master_host=s'    => \$orig_master_host,
-  'orig_master_ip=s'      => \$orig_master_ip,
-  'orig_master_port=i'    => \$orig_master_port,
-  'new_master_host=s'     => \$new_master_host,
-  'new_master_ip=s'       => \$new_master_ip,
-  'new_master_port=i'     => \$new_master_port,
-  'new_master_user=s'     => \$new_master_user,
-  'new_master_password=s' => \$new_master_password,
+    'command=s'          => \$command,
+    'ssh_user=s'         => \$ssh_user,
+    'orig_master_host=s' => \$orig_master_host,
+    'orig_master_ip=s'   => \$orig_master_ip,
+    'orig_master_port=i' => \$orig_master_port,
+    'new_master_host=s'  => \$new_master_host,
+    'new_master_ip=s'    => \$new_master_ip,
+    'new_master_port=i'  => \$new_master_port,
 );
 
 exit &main();
 
 sub main {
-  if ( $command eq "stop" || $command eq "stopssh" ) {
 
-    # $orig_master_host, $orig_master_ip, $orig_master_port are passed.
-    # If you manage master ip address at global catalog database,
-    # invalidate orig_master_ip here.
-    my $exit_code = 1;
-    eval {
+    print "\n\nIN SCRIPT TEST====$ssh_stop_vip==$ssh_start_vip===\n\n";
 
-      # updating global catalog, etc
-      print "Disabling the VIP on old master: $orig_master_host \n";
-      &stop_vip();
-      $exit_code = 0;
-    };
-    if ($@) {
-      warn "Got Error: $@\n";
-      exit $exit_code;
+    if ( $command eq "stop" || $command eq "stopssh" ) {
+
+        my $exit_code = 1;
+        eval {
+            print "Disabling the VIP on old master: $orig_master_host \n";
+            &stop_vip();
+            $exit_code = 0;
+        };
+        if ($@) {
+            warn "Got Error: $@\n";
+            exit $exit_code;
+        }
+        exit $exit_code;
     }
-    exit $exit_code;
-  }
-  elsif ( $command eq "start" ) {
+    elsif ( $command eq "start" ) {
 
-    # all arguments are passed.
-    # If you manage master ip address at global catalog database,
-    # activate new_master_ip here.
-    # You can also grant write access (create user, set read_only=0, etc) here.
-    my $exit_code = 10;
-    eval {
-      print "Enabling the VIP - $vip on the new master - $new_master_host \n";
-      &start_vip();
-      $exit_code = 0;
-    };
-    if ($@) {
-      warn $@;
-
-      # If you want to continue failover, exit 10.
-      exit $exit_code;
+        my $exit_code = 10;
+        eval {
+            print "Enabling the VIP - $vip on the new master - $new_master_host \n";
+            &start_vip();
+            $exit_code = 0;
+        };
+        if ($@) {
+            warn $@;
+            exit $exit_code;
+        }
+        exit $exit_code;
     }
-    exit $exit_code;
-  }
-  elsif ( $command eq "status" ) {
-
-    # do nothing
-    print "Checking the Status of the script.. OK \n";
-    `ssh $ssh_user\@cluster1 \" $ssh_start_vip \"`;
-    exit 0;
-  }
-  else {
-    &usage();
-    exit 1;
-  }
+    elsif ( $command eq "status" ) {
+        print "Checking the Status of the script.. OK \n";
+        exit 0;
+    }
+    else {
+        &usage();
+        exit 1;
+    }
 }
 
 sub start_vip() {
     `ssh $ssh_user\@$new_master_host \" $ssh_start_vip \"`;
 }
-
 sub stop_vip() {
+     return 0  unless  ($ssh_user);
     `ssh $ssh_user\@$orig_master_host \" $ssh_stop_vip \"`;
 }
 
 sub usage {
-  print
-"Usage: master_ip_failover --command=start|stop|stopssh|status --orig_master_host=host --orig_master_ip=ip --orig_master_port=port --new_master_host=host --new_master_ip=ip --new_master_port=port\n";
+    print
+    "Usage: master_ip_failover --command=start|stop|stopssh|status --orig_master_host=host --orig_master_ip=ip --orig_master_port=port --new_master_host=host --new_master_ip=ip --new_master_port=port\n";
 }
 
 ```  
 
 * MHA的启动与关闭  
 start  
-```nohup masterha_manager --conf=/etc/mha/app1.cnf --remove_dead_master_conf --ignore_last_failover < /dev/null > /var/log/masterha/app1/manager.log 2>&1 &```  
+```
+nohup masterha_manager --conf=/etc/mha/app1.cnf < /dev/null > /var/log/masterha/app1/manager.log 2>&1 &
+可选参数
+--remove_dead_master_conf
+--ignore_last_failover
+```  
 stop  
 ```masterha_stop --conf=/etc/mha/app1.cnf```  
 
@@ -241,6 +214,9 @@ stop
 1. masterha_check_ssh --conf=/etc/mha/app1.cnf  
 2. masterha_check_repl --conf=/etc/mha/app1.cnf  
 3. masterha_check_status --conf=/etc/mha/app1.cnf 
+
+* 测试  
+
 
 * 参考文档  
   1. [MHA](https://code.google.com/p/mysql-master-ha/)  
