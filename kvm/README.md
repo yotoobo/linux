@@ -95,8 +95,11 @@ guest自动启动
 
 * 克隆  
 ```virt-clone -o vm1_171 -n vm1_172 --file /home/kvm/vm1_172.img```  
-修改vm1_172的网卡配置,  
+修改vm1_172的网卡配置  
 ```virt-edit -d vm1_172 /etc/sysconfig/network-scripts/ifcfg-eth0```  
+
+* 添加网卡  
+```virsh attach-interface vm1_171 --type bridge --source br1```  
 
 * 虚拟化管理平台  
 ConVirt  
