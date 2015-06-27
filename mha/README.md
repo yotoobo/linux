@@ -99,11 +99,12 @@ hostname=slave1
 port=3306
 candidate_master=1
 
-
 [server3]
 hostname=slave2
 port=3306
+
 ```  
+
 ```
 cat master_ip_failover
 #!/usr/bin/env perl
@@ -140,8 +141,8 @@ my (
   $new_master_password
 );
 
-my $vip = '10.49.1.180';
-my $key = '2';
+my $vip = '192.168.1.100';
+my $key = '1';
 my $ssh_start_vip = '/sbin/ifconfig eth1:$key $vip';
 my $ssh_stop_vip = '/sbin/ifconfig eth1:$key down';
 $ssh_user = 'root';
@@ -229,8 +230,14 @@ sub usage {
 
 ```  
 
-* 执行检测  
-在slave2上  
+* MHA的启动与关闭  
+start  
+```nohup masterha_manager --conf=/etc/mha/app1.cnf --remove_dead_master_conf --ignore_last_failover < /dev/null > /var/log/masterha/app1/manager.log 2>&1 &```  
+stop  
+```masterha_stop --conf=/etc/mha/app1.cnf```  
+
+* 检测  
+在manager上  
 1. masterha_check_ssh --conf=/etc/mha/app1.cnf  
 2. masterha_check_repl --conf=/etc/mha/app1.cnf  
 3. masterha_check_status --conf=/etc/mha/app1.cnf 
