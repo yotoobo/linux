@@ -98,8 +98,10 @@ guest自动启动
 修改vm1_172的网卡配置  
 ```virt-edit -d vm1_172 /etc/sysconfig/network-scripts/ifcfg-eth0```  
 
-* 添加网卡  
+* 动态添加网卡  
 ```virsh attach-interface vm1_171 --type bridge --source br1```  
+保存  
+```virsh dumpxml vm1_171 > /etc/libvirt/qemu/vm1_171.xml```
 
 * 虚拟化管理平台  
 ConVirt  
