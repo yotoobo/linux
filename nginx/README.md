@@ -5,6 +5,25 @@
   * [nginx-resources](https://github.com/fcambus/nginx-resources)  
   
 * 应用
+  * Nginx之正向代理  
+  示例代码  
+```
+server{  
+        resolver 114.114.114.114;  
+        resolver_timeout 30s;   
+        listen 1082;  
+        location / {  
+                proxy_pass http://$http_host$request_uri;  
+                proxy_set_header Host $http_host;  
+                proxy_buffers 256 4k;  
+                proxy_max_temp_file_size 0;  
+                proxy_connect_timeout 30;  
+                proxy_cache_valid 200 302 10m;  
+                proxy_cache_valid 301 1h;  
+                proxy_cache_valid any 1m;  
+        }  
+}  
+```  
   * Nginx之反向代理+负载均衡  
   示例代码
 ```
