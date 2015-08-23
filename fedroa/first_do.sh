@@ -20,7 +20,7 @@ echo "Step 2, Install softwares:
 sleep 3
 
 # add repo
-su -c 'yum install --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm'
+su -c 'dnf -y -q install --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm'
 ## Adobe Repository 64-bit x86_64 ##
 sudo rpm -ivh http://linuxdownload.adobe.com/adobe-release/adobe-release-x86_64-1.0-1.noarch.rpm
 sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
@@ -34,7 +34,7 @@ gpgcheck=1
 gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
 EOF
 # Add google public key
-if [ -f './google_signing_key.pub' ]:then
+if [ -f './google_signing_key.pub' ];then
     sudo rpm --import ./google_signing_key.pub
 else
     sudo sed -i 's/gpgcheck=1/gpgcheck=0/' /etc/yum.repo.d/google-chrome.repo
