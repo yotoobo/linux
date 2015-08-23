@@ -74,7 +74,9 @@ How to install android-studio
 
 #### 常用软件 
 软件包管理:新立得软件包管理器  
+```sudo apt-get install synaptic```  
 docky:类似苹果的任务栏  
+```sudo apt-get install docky```
 系统管理:ubuntu tweak  
 vpn插件:network-manager-vpnc  
 虚拟化:virtualbox  
