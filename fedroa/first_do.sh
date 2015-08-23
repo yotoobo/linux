@@ -4,28 +4,29 @@
 # It's test on Fedora 22+
 # 8/22/2015
 
-echo "Step 1, Now it's update system ... "
+echo "请稍等,脚本正在运行 ... "
 sleep 2
 sudo dnf -y -q update
 
 clear
 
-echo "Step 2, Install softwares:
+echo "Install softwares:
 1. gnome-tweak-tool 
 2. cairo-dock 
 3. VLC
 4. Adobe Flash
 5. google-chrome
 "
-sleep 3
 
 # add repo
 su -c 'dnf -y -q install --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm'
+
 ## Adobe Repository 64-bit x86_64 ##
 sudo rpm -ivh http://linuxdownload.adobe.com/adobe-release/adobe-release-x86_64-1.0-1.noarch.rpm
 sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
+
 # chrome
-sudo cat >> /etc/yum.repo.d/google-chrome.repo << EOF
+sudo cat > /etc/yum.repo.d/google-chrome.repo << EOF
 [google-chrome]
 name=google-chrome
 baseurl=http://dl.google.com/linux/chrome/rpm/stable/$basearch
@@ -40,7 +41,24 @@ else
     sudo sed -i 's/gpgcheck=1/gpgcheck=0/' /etc/yum.repo.d/google-chrome.repo
 fi
 
-sudo dnf -y -q cairo-dock gnome-tweak-tool vlc flash-plugin google-chrome-stable
+sudo dnf -y -q install cairo-dock gnome-tweak-tool vlc flash-plugin google-chrome-stable
+
+
+echo 'Install zsh + oh-my-zsh + autojump '
+cd ~/
+sudo dnf -y -q install zsh wget
+sudo sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+
+
+echo 'Install pyenv '
+git clone https://github.com/yyuu/pyenv.git ~/.pyenv
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+exec $SHELL
+
+
 
 exit 0
 
