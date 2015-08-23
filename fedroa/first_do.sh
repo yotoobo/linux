@@ -19,9 +19,8 @@ echo "Step 2, Install softwares:
 "
 sleep 3
 
-# vlc
-# add vlc repo
-sudo rpm -ivh http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm
+# add repo
+su -c 'yum install --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm'
 ## Adobe Repository 64-bit x86_64 ##
 sudo rpm -ivh http://linuxdownload.adobe.com/adobe-release/adobe-release-x86_64-1.0-1.noarch.rpm
 sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
@@ -64,6 +63,6 @@ mv dircolors ~/.dircolors
 #sudo yum install orchis-gtk-theme
 
 #vim
-./configure --prefix=/usr/local/ --with-features=huge --enable-multibyte --enable-cscope --enable-sniff --enable-pythoninterp --with-python-config-dir=/usr/lib/python2.7/config --enable-python3interp --with-python3-config-dir=/usr/lib/python3.3/config --enable-rubyinterp --enable-perlinterp --enable-luainterp
-make VIMRUNTIMEDIR=/usr/local/share/vim/vim74
-sudo make install
+#./configure --prefix=/usr/local/ --with-features=huge --enable-multibyte --enable-cscope --enable-sniff --enable-pythoninterp --with-python-config-dir=/usr/lib/python2.7/config --enable-python3interp --with-python3-config-dir=/usr/lib/python3.3/config --enable-rubyinterp --enable-perlinterp --enable-luainterp
+#make VIMRUNTIMEDIR=/usr/local/share/vim/vim74
+#sudo make install
