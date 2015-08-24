@@ -10,20 +10,25 @@ sudo dnf -y -q update
 
 clear
 
-echo "Install softwares:
-1. gnome-tweak-tool 
-2. cairo-dock 
-3. VLC
-4. Adobe Flash
-5. google-chrome
-"
+echo "Install softwares: "
 
 # add repo
-su -c 'dnf -y -q install --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm'
+#su -c 'dnf -y -q install --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm'
+su -c 'dnf -y -q install --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm '
 
 ## Adobe Repository 64-bit x86_64 ##
 sudo rpm -ivh http://linuxdownload.adobe.com/adobe-release/adobe-release-x86_64-1.0-1.noarch.rpm
 sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
+
+# virtualbox
+sudo cat > /etc/yum.repo.d/virtualbox.repo << EOF
+[virtualbox]
+name=Fedora $releasever - $basearch - VirtualBox
+baseurl=http://download.virtualbox.org/virtualbox/rpm/fedora/$releasever/$basearch
+enabled=1
+gpgcheck=1
+gpgkey=https://www.virtualbox.org/download/oracle_vbox.asc
+EOF
 
 # chrome
 sudo cat > /etc/yum.repo.d/google-chrome.repo << EOF
@@ -41,7 +46,7 @@ else
     sudo sed -i 's/gpgcheck=1/gpgcheck=0/' /etc/yum.repo.d/google-chrome.repo
 fi
 
-sudo dnf -y -q install cairo-dock gnome-tweak-tool vlc flash-plugin google-chrome-stable
+sudo dnf -y -q install cairo-dock gnome-tweak-tool vlc flash-plugin google-chrome-stable virtualbox
 
 
 echo 'Install zsh + oh-my-zsh + autojump '
