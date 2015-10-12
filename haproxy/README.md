@@ -22,7 +22,8 @@ make install
 ```
 
 ## haproxy.cfg 示例
-```global
+```
+global
 	log 127.0.0.1	local0 日志记录到本地
 	log 127.0.0.1	local1 notice 
 	#log 127.0.0.1	local1 notice
@@ -85,7 +86,5 @@ backend webDynamic
 
 backend webStatic
 	balance source
-	server lamp 10.0.0.3:80 check rise 2 fall 1```
-
-
-
+	server lamp 10.0.0.3:80 check rise 2 fall 1
+```
