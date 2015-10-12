@@ -12,6 +12,15 @@
 
 ## [官方文档](http://cbonte.github.io/haproxy-dconv/configuration-1.5.html)
 
+## 安装
+```
+wget http://www.haproxy.org/download/1.5/src/haproxy-1.5.14.tar.gz
+tar zxf haproxy-1.5.14.tar.gz
+cd haproxy-1.5.14
+make TARGET=linux26 CPU=native USE_PCRE=1 USE_LIBCRYPT=1 USE_LINUX_SPLICE=1 USE_LINUX_TPROXY=1
+make install
+```
+
 ## haproxy.cfg 示例
 ```global
 	log 127.0.0.1	local0 日志记录到本地
