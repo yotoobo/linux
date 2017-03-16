@@ -8,9 +8,8 @@ Centos 6.6 x86_64
 
 * NFS结构  
   主要配置文件：/etc/exports  
-  配置挂载属主：/etc/idmapd.conf
-  >在配置挂载属主时，要保证所有机器的uid，gid一致。
-  分享资源的信息：/var/lib/nfs/*tab  
+  配置挂载属主：/etc/idmapd.conf  
+  分享资源的信息：/var/lib/nfs/*tab  
   维护指令：/usr/sbin/exportfs  
   维护指令：/usr/sbin/showmount  
   
@@ -25,3 +24,6 @@ Centos 6.6 x86_64
 * 挂载  
 在client端  
 ```mount -t nfs server.ip:/tmp /new_dir```
+
+> Note
+> 在配置挂载属主时，要保证用户的UID，GID一致。
