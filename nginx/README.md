@@ -91,7 +91,7 @@ proxy_cache_path /tmp/cache/ levels=1:2 keys_zone=my_cache:16m max_size=128m ina
 
 - /tmp/cache : 缓存目录，还有一种更高效的是使用tmpfs
 - levels=1:2 : 缓存目录的层级，因为单个目录下如果有大量文件，很影响性能，所以设为多级目录
-- keys_zone=my_cache:16m  : 指定缓存的名称及大小
+- keys_zone=my_cache:16m  : 指定缓存的名称及key(我理解为缓存文件的目录，这样可以加速检索)
 - max_size=128m  : 指定缓存的最大值
 - inactive=30d : 指定失效时间，也就是多久没有被访问，这里设置30d
 - use_temp_path=off : 默认在写入缓存文件时，会先写在一个临时区域，设为off后则将临时文件与缓存写入同一路径
@@ -100,8 +100,8 @@ proxy_cache_path /tmp/cache/ levels=1:2 keys_zone=my_cache:16m max_size=128m ina
 
 ```
  proxy_cache my_cache;
-	proxy_cache_valid 200 30m;
-	proxy_cache_valid 404 1m;
+ proxy_cache_valid 200 30m;
+ proxy_cache_valid 404 1m;
  proxy_ignore_headers X-Accel-Expires Expires Cache-Control;
  proxy_ignore_headers Set-Cookie;
  proxy_hide_header Set-Cookie;
