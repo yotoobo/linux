@@ -1,12 +1,14 @@
-* 文档  
+### 文档  
   * [admin-guide](http://nginx.com/resources/admin-guide/) 
   * [wiki](http://wiki.nginx.org/Main)
   * [documentation](http://nginx.org/en/docs/)
   * [nginx-resources](https://github.com/fcambus/nginx-resources)  
-  
-* 应用
-  * Nginx之正向代理  
-  示例代码  
+  
+### 应用
+
+#### Nginx之正向代理  
+示例代码
+
 ```
 server{  
         resolver 114.114.114.114;  
@@ -24,8 +26,11 @@ server{
         }  
 }  
 ```  
-  * Nginx之反向代理+负载均衡  
-  示例代码
+
+
+#### Nginx之反向代理+负载均衡  
+示例代码
+
 ```
 upstream test.com_static {
     server 10.10.7.106:80;
@@ -73,6 +78,33 @@ server {
     }
 }
 ```  
-  * Nginx之页面缓存  
-  
 
+#### Nginx之页面缓存
+
+**http**中添加如下配置：
+
+```
+proxy_cache_path /tmp/cache/ levels=1:2 keys_zone=my_cache:16m max_size=128m inactive=30d use_temp_path=off;
+```
+
+解释如下：
+
+- /tmp/cache : 缓存目录，还有一种更高效的是使用tmpfs
+- levels=1:2 : 缓存目录的层级，因为单个目录下如果有大量文件，很影响性能，所以设为多级目录
+- keys_zone=my_cache:16m  : 指定缓存的名称及大小
+- max_size=128m  : 指定缓存的最大值
+- inactive=30d : 指定失效时间，也就是多久没有被访问，这里设置30d
+- use_temp_path=off : 默认在写入缓存文件时，会先写在一个临时区域，设为off后则将临时文件与缓存写入同一路径
+
+**server**添加配置如下：
+
+```
+ proxy_cache my_cache;
+	proxy_cache_valid 200 30m;
+	proxy_cache_valid 404 1m;
+ proxy_ignore_headers X-Accel-Expires Expires Cache-Control;
+ proxy_ignore_headers Set-Cookie;
+ proxy_hide_header Set-Cookie;
+ proxy_hide_header X-powered-by;
+
+```
