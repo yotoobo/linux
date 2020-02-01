@@ -1,0 +1,22 @@
+version: '3.2'
+
+services:
+  openldap:
+    image: osixia/openldap:1.3.0
+    ports: 
+      - "389:389"
+      - "636:636"
+    environment: 
+      - LDAP_TLS=false
+    container_name: "openldap"
+    restart: always
+
+  phpldap:
+    image: osixia/phpldapadmin:0.9.0
+    ports:
+      - "10080:80"
+    environment: 
+      - PHPLDAPADMIN_LDAP_HOSTS=openldap
+      - PHPLDAPADMIN_HTTPS=false
+    container_name: "phpldap"
+    restart: always

@@ -128,7 +128,7 @@ docker run -t -i --volumes-from data centos /bin/bash
 
 ### Docker-compose
 
-安装 compose 工具:
+安装 compose :
 
 ```shell
 sudo curl -L "https://github.com/docker/compose/releases/download/1.25.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
