@@ -1,18 +1,18 @@
-### 文档  
-  * [admin-guide](http://nginx.com/resources/admin-guide/) 
-  * [wiki](http://wiki.nginx.org/Main)
-  * [documentation](http://nginx.org/en/docs/)
-  * [nginx-resources](https://github.com/fcambus/nginx-resources)  
-  
-### 应用
+# 文档
 
-#### Nginx之正向代理  
-示例代码
+- [admin-guide](http://nginx.com/resources/admin-guide/)
+- [wiki](http://wiki.nginx.org/Main)
+- [docs](http://nginx.org/en/docs/)
+- [nginx-resources](https://github.com/fcambus/nginx-resources)  
 
-```
+## 应用
+
+### Nginx 正向代理
+
+```conf
 server{  
         resolver 114.114.114.114;  
-        resolver_timeout 30s;   
+        resolver_timeout 30s;
         listen 1082;  
         location / {  
                 proxy_pass http://$http_host$request_uri;  
@@ -27,11 +27,9 @@ server{
 }  
 ```  
 
+### Nginx 反向代理 + 负载均衡
 
-#### Nginx之反向代理+负载均衡  
-示例代码
-
-```
+```conf
 upstream test.com_static {
     server 10.10.7.106:80;
 }
@@ -41,12 +39,12 @@ upstream test.com_dynamic { #负载均衡
     server 10.10.7.110:80;
     server 10.10.7.113:80;
 }
- 
+
 server {
     listen 80;
     server_name *.test.com;
     access_log  logs/test.com.access.log main buffer=32k flush=10s;
-    
+
     location ~* \.(jpeg|jpg|png|gif|js|css)$ { #做动静分离
         proxy_pass http://test.com_static;
         proxy_read_timeout 300;
@@ -61,7 +59,7 @@ server {
         client_max_body_size  3072k;
         client_body_buffer_size 128k; 
     }
-    
+
     location / {
         proxy_pass http://test.com_dynamic;
         proxy_read_timeout 300;
@@ -79,12 +77,14 @@ server {
 }
 ```  
 
-#### Nginx之页面缓存
+### Nginx 页面缓存
 
-**http**中添加如下配置：
+**Context: http** 中添加配置：
 
-```
-proxy_cache_path /tmp/cache/ levels=1:2 keys_zone=my_cache:16m max_size=128m inactive=30d use_temp_path=off;
+```conf
+http {
+    proxy_cache_path /tmp/cache/ levels=1:2 keys_zone=my_cache:16m max_size=128m inactive=30d use_temp_path=off;
+}
 ```
 
 解释如下：
@@ -96,15 +96,57 @@ proxy_cache_path /tmp/cache/ levels=1:2 keys_zone=my_cache:16m max_size=128m ina
 - inactive=30d : 指定失效时间，也就是多久没有被访问，这里设置30d
 - use_temp_path=off : 默认在写入缓存文件时，会先写在一个临时区域，设为off后则将临时文件与缓存写入同一路径
 
-**server**添加配置如下：
+**Context: server** 中添加配置：
 
+```conf
+server {
+    proxy_cache my_cache;
+    proxy_cache_valid 200 30m;
+    proxy_cache_valid 404 1m;
+    proxy_ignore_headers X-Accel-Expires Expires Cache-Control;
+    proxy_ignore_headers Set-Cookie;
+    proxy_hide_header Set-Cookie;
+    proxy_hide_header X-powered-by;
+}
 ```
- proxy_cache my_cache;
- proxy_cache_valid 200 30m;
- proxy_cache_valid 404 1m;
- proxy_ignore_headers X-Accel-Expires Expires Cache-Control;
- proxy_ignore_headers Set-Cookie;
- proxy_hide_header Set-Cookie;
- proxy_hide_header X-powered-by;
 
+### Nginx 限流
+
+#### ngx_http_limit_conn
+
+限制单个 IP 连接数.
+
+```conf
+http {
+    limit_conn_zone $binary_remote_addr zone=addr:10m;
+
+    ...
+
+    server {
+
+        ...
+
+        location /download/ {
+            limit_conn addr 1;
+        }
+```
+
+#### ngx_http_limit_req
+
+限制单个 IP 请求数速率.
+
+```conf
+http {
+    limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
+
+    ...
+
+    server {
+
+        ...
+
+        location /search/ {
+            limit_req zone=one burst=5;
+            limit_req_status 503;
+        }
 ```
